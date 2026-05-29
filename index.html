@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shop.ayushacharya</title>
+    <title>Shop.ayushacharya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -46,7 +46,7 @@
         .navbar {
             background: var(--bg-surface);
             border-bottom: 1px solid var(--border-color);
-            padding: 1.25rem 2rem;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -68,25 +68,25 @@
             text-decoration: none;
             color: var(--text-heading);
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             letter-spacing: -0.5px;
         }
 
         .brand-logo i {
             background: var(--brand-gradient);
             color: white;
-            padding: 0.55rem;
+            padding: 0.5rem;
             border-radius: var(--radius-md);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
         .nav-cart-status {
             background: #f1f5f9;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-heading);
             display: flex;
             align-items: center;
@@ -100,40 +100,40 @@
         /* Global Structural Container Layout */
         .main-workspace {
             max-width: 1300px;
-            margin: 3rem auto;
+            margin: 2rem auto;
             padding: 0 1.5rem;
         }
 
         .store-intro {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             text-align: left;
         }
 
         .store-intro h1 {
-            font-size: 2.25rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--text-heading);
             letter-spacing: -0.75px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .store-intro p {
             color: var(--text-body);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         /* Dynamic Layout Engine */
         .shop-layout-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: start;
             transition: grid-template-columns 0.4s ease;
         }
 
         @media (min-width: 992px) {
             .shop-layout-grid.has-items {
-                grid-template-columns: 1.4fr 1.2fr;
+                grid-template-columns: 1.4fr 1.1fr;
             }
             .shop-layout-grid:not(.has-items) {
                 grid-template-columns: 1fr;
@@ -151,7 +151,7 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 1.75rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
@@ -160,7 +160,7 @@
         }
 
         .product-premium-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
             border-color: var(--brand-primary);
         }
@@ -168,15 +168,15 @@
         .item-meta-header {
             display: flex;
             align-items: flex-start;
-            gap: 1.25rem;
-            margin-bottom: 1rem;
+            gap: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         .item-meta-header .icon-wrapper {
             background: #eff6ff;
             color: var(--brand-primary);
-            font-size: 1.5rem;
-            padding: 0.85rem;
+            font-size: 1.3rem;
+            padding: 0.75rem;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -190,7 +190,7 @@
         }
 
         .item-meta-header h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-heading);
             line-height: 1.3;
@@ -199,7 +199,7 @@
 
         .product-premium-card .desc {
             color: var(--text-body);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
@@ -208,17 +208,17 @@
             background: #fdfdfd;
             border: 1px solid #f1f5f9;
             border-radius: var(--radius-md);
-            padding: 1rem;
-            margin-bottom: 1.25rem;
-            min-height: 160px;
+            padding: 0.85rem;
+            margin-bottom: 1rem;
+            min-height: 150px;
         }
 
         .dynamic-spec-box h5 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-muted);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .dynamic-spec-list {
@@ -226,42 +226,42 @@
         }
 
         .dynamic-spec-list li {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-body);
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .dynamic-spec-list li i {
             color: var(--brand-success);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         /* Premium Customized Range Sliders Configuration */
         .slider-control-hub {
             background: #f8fafc;
             border: 1px solid var(--border-color);
-            padding: 1.25rem;
+            padding: 1rem;
             border-radius: var(--radius-md);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .slider-meta-tags {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             color: var(--text-body);
             letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
         }
 
         .slider-meta-tags .min-tag {
             background: #e2e8f0;
-            padding: 0.15rem 0.5rem;
+            padding: 0.1rem 0.4rem;
             border-radius: 4px;
         }
 
@@ -274,34 +274,28 @@
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
-            height: 6px;
+            height: 5px;
             border-radius: 10px;
             background: var(--border-color);
             outline: none;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
             transition: background 0.3s;
         }
 
         .custom-range-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: var(--brand-primary);
-            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
             cursor: pointer;
-            transition: transform 0.1s, background 0.2s;
-        }
-
-        .custom-range-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
-            background: var(--brand-primary-hover);
         }
 
         .live-pricing-counter {
             text-align: right;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--text-heading);
         }
@@ -316,10 +310,10 @@
             background: var(--text-heading);
             color: white;
             border: none;
-            padding: 0.9rem;
+            padding: 0.8rem;
             border-radius: var(--radius-md);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
             display: flex;
@@ -333,17 +327,17 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
 
-        /* Professional Sidebar Layout */
+        /* PORTABLE SIDEBAR DESIGN */
         .checkout-panel-sticky {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 2.25rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-md);
             position: sticky;
-            top: 6rem;
+            top: 5rem;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(15px);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
@@ -353,15 +347,15 @@
         }
 
         .checkout-panel-sticky h2 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--text-heading);
-            margin-bottom: 1.75rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
+            padding-bottom: 0.75rem;
         }
 
         .checkout-panel-sticky h2 i {
@@ -369,8 +363,8 @@
         }
 
         .cart-items-ledger {
-            margin-bottom: 1.75rem;
-            max-height: 280px;
+            margin-bottom: 1rem;
+            max-height: 200px;
             overflow-y: auto;
             padding-right: 0.25rem;
         }
@@ -379,20 +373,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid #f1f5f9;
             animation: nodeEntrance 0.25s ease-out forwards;
         }
 
         .ledger-row-details h4 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--text-heading);
-            margin-bottom: 0.15rem;
+            margin-bottom: 0.1rem;
         }
 
         .ledger-row-details span {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--brand-primary);
             font-weight: 700;
         }
@@ -402,8 +396,8 @@
             border: none;
             color: var(--brand-danger);
             cursor: pointer;
-            font-size: 0.95rem;
-            padding: 0.5rem;
+            font-size: 0.85rem;
+            padding: 0.4rem;
             border-radius: var(--radius-sm);
             transition: all 0.2s;
         }
@@ -417,45 +411,58 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 2px solid var(--border-color);
-            padding-top: 1.25rem;
-            margin-bottom: 2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .summary-total-container span {
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--text-body);
         }
 
         .summary-total-container .price-tag {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--text-heading);
             letter-spacing: -0.5px;
         }
 
-        /* Form Visual Components Setup */
+        /* Portable Form Structures & Multi-column Row */
+        .form-row-compact {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (min-width: 480px) {
+            .form-row-compact {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .form-control-block {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .form-control-block label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-heading);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .form-control-block input, .form-control-block textarea {
             width: 100%;
-            padding: 0.85rem 1rem;
+            padding: 0.65rem 0.85rem;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: var(--text-heading);
             outline: none;
             background-color: #f8fafc;
@@ -465,38 +472,37 @@
         .form-control-block input:focus, .form-control-block textarea:focus {
             border-color: var(--brand-primary);
             background-color: white;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        /* Locked Professional Gateway Elements Badge */
+        /* Streamlined Locked Gateway Elements */
         .gateway-exclusive-lock {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             border: 1px solid #fee2e2;
             background: #fff5f5;
             color: #991b1b;
-            padding: 1rem;
+            padding: 0.6rem 0.85rem;
             border-radius: var(--radius-md);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
         .gateway-exclusive-lock i {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             color: var(--fonepay-red);
         }
 
         .gateway-instruction-banner {
             background-color: #f8fafc;
-            border-left: 4px solid var(--fonepay-red);
+            border-left: 3px solid var(--fonepay-red);
             color: var(--text-body);
-            padding: 0.85rem 1rem;
+            padding: 0.5rem 0.75rem;
             border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            margin-top: 0.6rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            font-weight: 500;
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+            line-height: 1.3;
         }
 
         .checkout-submit-trigger {
@@ -504,18 +510,19 @@
             background: var(--brand-gradient);
             color: white;
             border: none;
-            padding: 1.1rem;
-            font-size: 1.05rem;
+            padding: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
             border-radius: var(--radius-md);
             cursor: pointer;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
             transition: all 0.2s;
+            margin-top: 0.5rem;
         }
 
         .checkout-submit-trigger:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 5px 16px rgba(37, 99, 235, 0.35);
         }
 
         .checkout-submit-trigger:disabled {
@@ -526,36 +533,30 @@
             transform: none;
         }
 
-        /* Contact & Dedicated Help Desks Modules Layout */
+        /* Compact Dedicated Help Desk */
         .support-help-center {
-            margin-top: 2.5rem;
+            margin-top: 1.25rem;
             background: #f8fafc;
             border: 1px dashed var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1.25rem;
+            padding: 0.85rem;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-body);
+            line-height: 1.4;
         }
 
         .support-help-center a {
             color: var(--brand-primary);
             font-weight: 700;
             text-decoration: none;
-            padding-bottom: 2px;
-            border-bottom: 2px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.2s;
-        }
-
-        .support-help-center a:hover {
-            border-bottom-color: var(--brand-primary);
-            color: var(--brand-primary-hover);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .hidden { display: none !important; }
 
         @keyframes nodeEntrance {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -699,13 +700,15 @@
                 </div>
 
                 <form id="store-checkout-form">
-                    <div class="form-control-block">
-                        <label for="usr-name">Full Name</label>
-                        <input type="text" id="usr-name" placeholder="E.g. Jennifer Paul" required>
-                    </div>
-                    <div class="form-control-block">
-                        <label for="usr-email">Email Address</label>
-                        <input type="email" id="usr-email" placeholder="client@company.com" required>
+                    <div class="form-row-compact">
+                        <div class="form-control-block">
+                            <label for="usr-name">Full Name</label>
+                            <input type="text" id="usr-name" placeholder="Jennifer Paul" required>
+                        </div>
+                        <div class="form-control-block">
+                            <label for="usr-email">Email Address</label>
+                            <input type="email" id="usr-email" placeholder="client@company.com" required>
+                        </div>
                     </div>
                     
                     <div class="form-control-block">
@@ -715,20 +718,20 @@
                             <span>FonePay Secure QR Portal</span>
                         </div>
                         <div class="gateway-instruction-banner">
-                            The FonePay verification invoice will be delivered directly to your email context after confirmation.
+                            The FonePay invoice will be sent directly to your email after confirmation.
                         </div>
                     </div>
 
                     <div class="form-control-block">
                         <label for="usr-notes">Project Directives / Special Instructions</label>
-                        <textarea id="usr-notes" rows="3" placeholder="Provide extra framework instructions, asset scopes or context descriptions..."></textarea>
+                        <textarea id="usr-notes" rows="2" placeholder="Provide extra framework instructions, context descriptions..."></textarea>
                     </div>
 
                     <button type="submit" id="submit-order-btn" class="checkout-submit-trigger" disabled>Place Order Request</button>
                 </form>
 
                 <div class="support-help-center">
-                    Looking for custom specifications or individual personal support? <a href="mailto:contact.ayushacharya5.com.np?subject=Custom%20Project%20Inquiry%20-%20shop.ayushacharya">Click Here</a> to consult with us directly.
+                    Need custom specs or custom assistance? <a href="mailto:contact.ayushacharya5.com.np?subject=Custom%20Project%20Inquiry%20-%20shop.ayushacharya">Click Here</a> to email us directly.
                 </div>
             </div>
         </div>
@@ -909,7 +912,7 @@
                 interactiveRowElement.innerHTML = `
                     <div class="ledger-row-details">
                         <h4>${cartNode.name}</h4>
-                        <span>Budget Base: Rs. ${formatRupees(cartNode.price)}</span>
+                        <span>Rs. ${formatRupees(cartNode.price)}</span>
                     </div>
                     <button type="button" class="ledger-row-delete" onclick="expelCartRow(${numericPointer})" title="Remove item">
                         <i class="fa-solid fa-trash-can"></i>
@@ -942,36 +945,28 @@
             const currentGrandSumVal = summaryTotalValueDisplay.textContent;
 
             // Generate clean plain text formatting for the email body
-            let emailBodyText = `NEW ORDER REQUEST - shop.ayushacharya\n`;
-            emailBodyText += `=========================================\n\n`;
-            emailBodyText += `👤 CLIENT DETAILS:\n`;
-            emailBodyText += `-----------------\n`;
+            let emailBodyText = `ORDER PROPOSAL - shop.ayushacharya\n`;
+            emailBodyText += `-----------------------------------------\n\n`;
+            emailBodyText += `CLIENT INFO:\n`;
             emailBodyText += `Name: ${buyerNameString}\n`;
             emailBodyText += `Email: ${buyerEmailString}\n\n`;
             
-            emailBodyText += `📦 SELECTED SERVICES & BUDGET BREAKDOWN:\n`;
-            emailBodyText += `-----------------------------------------\n`;
+            emailBodyText += `SELECTED SERVICES:\n`;
             checkoutCartItems.forEach((node, idx) => {
-                emailBodyText += `${idx + 1}. Service: ${node.name}\n`;
-                emailBodyText += `   Allocated Budget: Rs. ${formatRupees(node.price)}\n\n`;
+                emailBodyText += `[${idx + 1}] ${node.name} -> Rs. ${formatRupees(node.price)}\n`;
             });
+            emailBodyText += `\n`;
 
-            emailBodyText += `💰 TOTAL ESTIMATED INVESTMENT:\n`;
-            emailBodyText += `-----------------------------\n`;
-            emailBodyText += `Rs. ${currentGrandSumVal}\n\n`;
+            emailBodyText += `TOTAL INVESTMENT: Rs. ${currentGrandSumVal}\n`;
+            emailBodyText += `PAYMENT METHOD: FonePay Secure QR\n\n`;
 
-            emailBodyText += `💳 PAYMENT GATEWAY:\n`;
-            emailBodyText += `-------------------\n`;
-            emailBodyText += `FonePay Secure QR Portal\n\n`;
-
-            emailBodyText += `📝 PROJECT DIRECTIVES / SPECIAL INSTRUCTIONS:\n`;
-            emailBodyText += `---------------------------------------------\n`;
+            emailBodyText += `SPECIAL INSTRUCTIONS:\n`;
             emailBodyText += `${extraClientSpecs}\n\n`;
-            emailBodyText += `=========================================\n`;
-            emailBodyText += `Generated automatically from shop.ayushacharya`;
+            emailBodyText += `-----------------------------------------\n`;
+            emailBodyText += `Sent via shop.ayushacharya platform.`;
 
             const targetRecipient = "contact.ayushacharya5.com.np";
-            const dynamicSubject = `New Agency Order Proposal - ${buyerNameString}`;
+            const dynamicSubject = `Order Proposal - ${buyerNameString}`;
             
             // Check if user is on PC/Desktop or Mobile
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
