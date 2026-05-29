@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shop.ayushacharya | Premium Agency Store</title>
+    <title>shop.ayushacharya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -715,7 +715,7 @@
                             <span>FonePay Secure QR Portal</span>
                         </div>
                         <div class="gateway-instruction-banner">
-                            You would receive the Fonepay QR in your email after order creation.
+                            The FonePay verification invoice will be delivered directly to your email context after confirmation.
                         </div>
                     </div>
 
@@ -734,11 +734,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Init platform keys
-        emailjs.init("YOUR_PUBLIC_KEY");
-
         // Application Global Data Matrix Store arrays
         let checkoutCartItems = [];
 
@@ -886,7 +882,7 @@
                 setTimeout(() => {
                     checkoutSidebarPanel.classList.add('hidden');
                     layoutGridWrapper.classList.remove('has-items');
-                }, 400); // matches css exit animation transitions speeds
+                }, 400); 
                 
                 summaryTotalValueDisplay.textContent = "0";
                 processOrderFormBtn.disabled = true;
@@ -897,7 +893,6 @@
             if(checkoutSidebarPanel.classList.contains('hidden')) {
                 layoutGridWrapper.classList.add('has-items');
                 checkoutSidebarPanel.classList.remove('hidden');
-                // Allow thread repaint layout execution before appending opacity shifts animations
                 setTimeout(() => {
                     checkoutSidebarPanel.classList.add('visible');
                 }, 50);
@@ -932,7 +927,7 @@
             syncClientStoreEcosystem();
         };
 
-        // Form processing email triggers dispatch modules pipeline handlers setups
+        // Form processing Direct Gmail Web / Native Redirect Router
         document.getElementById('store-checkout-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -941,37 +936,60 @@
                 return;
             }
 
-            let structuredEmailTableLayout = "";
-            checkoutCartItems.forEach(node => {
-                structuredEmailTableLayout += `📦 [Service Item]: ${node.name} | Adjusted Allocation Budget: Rs. ${formatRupees(node.price)}\n`;
-            });
-
-            const currentGrandSumVal = summaryTotalValueDisplay.textContent;
             const buyerNameString = document.getElementById('usr-name').value;
             const buyerEmailString = document.getElementById('usr-email').value;
-            const extraClientSpecs = document.getElementById('usr-notes').value;
+            const extraClientSpecs = document.getElementById('usr-notes').value || "None provided";
+            const currentGrandSumVal = summaryTotalValueDisplay.textContent;
 
-            const mappedEmailPackagePayload = {
-                to_email: 'contact.ayushacharya5.com.np',
-                from_name: buyerNameString,
-                from_email: buyerEmailString,
-                breakdown: structuredEmailTableLayout,
-                total_budget: `Rs. ${currentGrandSumVal}`,
-                payment_choice: "FonePay QR Gateway",
-                message: extraClientSpecs
-            };
+            // Generate clean plain text formatting for the email body
+            let emailBodyText = `NEW ORDER REQUEST - shop.ayushacharya\n`;
+            emailBodyText += `=========================================\n\n`;
+            emailBodyText += `👤 CLIENT DETAILS:\n`;
+            emailBodyText += `-----------------\n`;
+            emailBodyText += `Name: ${buyerNameString}\n`;
+            emailBodyText += `Email: ${buyerEmailString}\n\n`;
+            
+            emailBodyText += `📦 SELECTED SERVICES & BUDGET BREAKDOWN:\n`;
+            emailBodyText += `-----------------------------------------\n`;
+            checkoutCartItems.forEach((node, idx) => {
+                emailBodyText += `${idx + 1}. Service: ${node.name}\n`;
+                emailBodyText += `   Allocated Budget: Rs. ${formatRupees(node.price)}\n\n`;
+            });
 
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', mappedEmailPackagePayload)
-                .then(function() {
-                    alert('Order Lodged! Your custom selected project specifications have been sent.\n\nYou would receive the Fonepay QR in your email after order creation.');
-                    
-                    // Flush states arrays systems smoothly back to initial parameters benchmarks
-                    checkoutCartItems = [];
-                    document.getElementById('store-checkout-form').reset();
-                    syncClientStoreEcosystem();
-                }, function(deliveryFaultErr) {
-                    alert('Distribution gateway error triggered. Error info description details: ' + JSON.stringify(deliveryFaultErr));
-                });
+            emailBodyText += `💰 TOTAL ESTIMATED INVESTMENT:\n`;
+            emailBodyText += `-----------------------------\n`;
+            emailBodyText += `Rs. ${currentGrandSumVal}\n\n`;
+
+            emailBodyText += `💳 PAYMENT GATEWAY:\n`;
+            emailBodyText += `-------------------\n`;
+            emailBodyText += `FonePay Secure QR Portal\n\n`;
+
+            emailBodyText += `📝 PROJECT DIRECTIVES / SPECIAL INSTRUCTIONS:\n`;
+            emailBodyText += `---------------------------------------------\n`;
+            emailBodyText += `${extraClientSpecs}\n\n`;
+            emailBodyText += `=========================================\n`;
+            emailBodyText += `Generated automatically from shop.ayushacharya`;
+
+            const targetRecipient = "contact.ayushacharya5.com.np";
+            const dynamicSubject = `New Agency Order Proposal - ${buyerNameString}`;
+            
+            // Check if user is on PC/Desktop or Mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (!isMobile) {
+                // Desktop/PC: Direct target to official Gmail Compose in a new browser tab
+                const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(targetRecipient)}&su=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBodyText)}`;
+                window.open(gmailWebUrl, '_blank');
+            } else {
+                // Mobile devices: Fall back to native app mailto triggers seamlessly
+                const nativeMailtoUrl = `mailto:${targetRecipient}?subject=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBodyText)}`;
+                window.location.href = nativeMailtoUrl;
+            }
+
+            // Flush client application states after action handoff
+            checkoutCartItems = [];
+            document.getElementById('store-checkout-form').reset();
+            syncClientStoreEcosystem();
         });
 
         // Initialize lists with initial states
