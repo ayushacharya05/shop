@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop.ayushacharya | Premium Agency Store</title>
-        <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ayushacharya05/shop/refs/heads/main/images/icon.png">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ayushacharya05/shop/refs/heads/main/images/icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -737,7 +738,7 @@
                         <div class="dynamic-spec-box">
                             <h5>Included Plan Inclusions:</h5>
                             <ul class="dynamic-spec-list" id="hosting-spec-target">
-                                </ul>
+                            </ul>
                         </div>
                     </div>
                     <div>
@@ -761,7 +762,7 @@
                         <div class="dynamic-spec-box">
                             <h5>Domain Registry Inclusions:</h5>
                             <ul class="dynamic-spec-list" id="domain-spec-target">
-                                </ul>
+                            </ul>
                         </div>
                     </div>
                     <div>
@@ -820,7 +821,7 @@
                 </form>
 
                 <div class="support-help-center">
-                    Need custom specs or custom assistance? <a href="mailto:contact@ayushacharya5.com.np?subject=Custom%20Project%20Inquiry%20-%20shop.ayushacharya">Click Here</a> to email us directly.
+                    Need custom specs or custom assistance? <a href="#" id="custom-assistance-link">Click Here</a> to email us directly.
                 </div>
             </div>
         </div>
@@ -1096,6 +1097,27 @@
             checkoutCartItems = [];
             document.getElementById('store-checkout-form').reset();
             syncClientStoreEcosystem();
+        });
+
+        // Help Desk Direct Gmail Web / Native Redirect Router
+        document.getElementById('custom-assistance-link').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const targetRecipient = "contact@ayushacharya5.com.np";
+            const dynamicSubject = "Custom Project Inquiry - shop.ayushacharya";
+            
+            // Check if user is on PC/Desktop or Mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (!isMobile) {
+                // Desktop/PC: Direct target to official Gmail Compose URL with an empty body
+                const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetRecipient}&su=${encodeURIComponent(dynamicSubject)}`;
+                window.open(gmailWebUrl, '_blank');
+            } else {
+                // Mobile devices: Native app mailto fallback
+                const nativeMailtoUrl = `mailto:${targetRecipient}?subject=${encodeURIComponent(dynamicSubject)}`;
+                window.location.href = nativeMailtoUrl;
+            }
         });
 
         // Initialize lists with initial states
