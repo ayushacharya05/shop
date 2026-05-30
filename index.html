@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shop.ayushacharya | Premium Agency Store</title>
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ayushacharya05/shop/refs/heads/main/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-primary: #3b82f6;
+            --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --brand-success: #10b981;
+            --brand-danger: #ef4444;
+            --fonepay-red: #dc2626;
+            --bg-main: #f8fafc;
+            --bg-surface: #ffffff;
+            --text-heading: #0f172a;
+            --text-body: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-body); padding: 0; line-height: 1.6; }
+
+        /* Navigation Header */
+        .navbar {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--text-heading);
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-logo i {
+            background: var(--brand-gradient);
+            color: white;
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+
+        .nav-cart-status {
+            background: #f1f5f9;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-cart-status i { color: var(--text-heading); font-size: 1.25rem; }
+        .nav-cart-status:hover { border-color: var(--brand-primary); background: #eff6ff; }
+        .nav-cart-status.has-items { background: var(--brand-gradient); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+        .nav-cart-status.has-items i { color: white; }
+
+        /* Auth UI Components */
+        .google-login-btn {
+            background: white;
+            color: var(--text-heading);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+
+        .google-login-btn:hover { background: #f8fafc; border-color: var(--text-muted); }
+        .google-login-btn i { color: #ea4335; }
+
+        .user-profile-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #f1f5f9;
+            padding: 0.4rem 0.8rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .user-profile-badge img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        .user-profile-badge span { font-size: 0.85rem; font-weight: 700; color: var(--text-heading); }
+
+        .logout-trigger {
+            background: transparent; border: none; color: var(--text-muted);
+            cursor: pointer; font-size: 0.95rem; padding: 0.2rem; transition: color 0.2s;
+        }
+        .logout-trigger:hover { color: var(--brand-danger); }
+
+        /* Workspace Grid Layout */
+        .main-workspace { max-width: 1300px; margin: 2rem auto; padding: 0 1.5rem; }
+        .store-intro { margin-bottom: 2rem; }
+        .store-intro h1 { font-size: 2rem; font-weight: 800; color: var(--text-heading); letter-spacing: -0.75px; margin-bottom: 0.4rem; }
+        
+        .shop-layout-grid { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem; }
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+
+        /* Sticky Cart Checkout Panel */
+        .checkout-panel-sticky {
+            background: var(--bg-surface); border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);
+            display: flex; flex-direction: column; opacity: 0; transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease; scroll-margin-top: 6rem;
+        }
+
+        .checkout-panel-sticky.visible { opacity: 1; transform: translateY(0); }
+
+        @media (min-width: 992px) {
+            .shop-layout-grid.has-items { grid-template-columns: 1.4fr 1.1fr; display: grid; align-items: start; }
+            .checkout-panel-sticky { position: sticky; top: 5rem; }
+        }
+
+        .product-premium-card {
+            background: var(--bg-surface); border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);
+            display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s;
+        }
+        .product-premium-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand-primary); }
+
+        .item-meta-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 0.85rem; }
+        .item-meta-header .icon-wrapper {
+            background: #eff6ff; color: var(--brand-primary); font-size: 1.3rem;
+            padding: 0.75rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+        }
+        .product-premium-card:hover .icon-wrapper { background: var(--brand-primary); color: white; }
+        .item-meta-header h3 { font-size: 1.15rem; font-weight: 700; color: var(--text-heading); }
+        .product-premium-card .desc { color: var(--text-body); font-size: 0.9rem; margin-bottom: 1rem; }
+
+        .dynamic-spec-box { background: #fdfdfd; border: 1px solid #f1f5f9; border-radius: var(--radius-md); padding: 0.85rem; margin-bottom: 1rem; min-height: 150px; }
+        .dynamic-spec-box h5 { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+        .dynamic-spec-list { list-style: none; }
+        .dynamic-spec-list li { font-size: 0.8rem; color: var(--text-body); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+        .dynamic-spec-list li i { color: var(--brand-success); }
+
+        .slider-control-hub { background: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; }
+        .slider-meta-tags { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-body); }
+        .tier-label-output { color: var(--brand-primary); }
+        .custom-range-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 10px; background: var(--border-color); outline: none; margin: 0.6rem 0; cursor: pointer; }
+        .custom-range-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--brand-primary); }
+        .live-pricing-counter { text-align: right; font-size: 1.15rem; font-weight: 800; color: var(--text-heading); }
+        .live-pricing-counter span { color: var(--brand-primary); }
+
+        .action-add-btn { width: 100%; background: var(--text-heading); color: white; border: none; padding: 0.8rem; border-radius: var(--radius-md); font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .action-add-btn:hover { background: var(--brand-primary); }
+
+        /* Cart Elements */
+        .checkout-panel-sticky h2 { font-size: 1.2rem; font-weight: 800; color: var(--text-heading); margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; }
+        .cart-items-ledger { margin-bottom: 1rem; max-height: 200px; overflow-y: auto; }
+        .ledger-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid #f1f5f9; }
+        .ledger-row-details h4 { font-size: 0.9rem; color: var(--text-heading); }
+        .ledger-row-details span { font-size: 0.8rem; color: var(--brand-primary); font-weight: 700; }
+        .ledger-row-delete { background: #fff5f5; border: none; color: var(--brand-danger); cursor: pointer; padding: 0.4rem; border-radius: var(--radius-sm); }
+
+        .summary-total-container { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem; margin-bottom: 1.25rem; font-weight: 700; }
+        .summary-total-container .price-tag { font-size: 1.5rem; color: var(--text-heading); }
+
+        .form-row-compact { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .form-control-block { margin-bottom: 0.75rem; }
+        .form-control-block label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-heading); margin-bottom: 0.3rem; }
+        .form-control-block input, .form-control-block textarea { width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background-color: #f8fafc; outline: none; }
+        .form-control-block input:focus, .form-control-block textarea:focus { border-color: var(--brand-primary); background-color: white; }
+
+        .gateway-exclusive-lock { display: flex; align-items: center; gap: 0.5rem; border: 1px solid #fee2e2; background: #fff5f5; color: #991b1b; padding: 0.6rem 0.85rem; border-radius: var(--radius-md); font-weight: 700; font-size: 0.85rem; }
+
+        .checkout-submit-trigger { width: 100%; background: var(--brand-gradient); color: white; border: none; padding: 0.9rem; font-size: 0.95rem; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; margin-top: 0.5rem; }
+        .checkout-submit-trigger:disabled { background: var(--text-muted); opacity: 0.4; cursor: not-allowed; }
+
+        /* Customer Dashboard */
+        .dashboard-section { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-md); margin-top: 2rem; }
+        .dashboard-header { border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .dashboard-header h2 { font-size: 1.4rem; font-weight: 800; color: var(--text-heading); display: flex; align-items: center; gap: 0.5rem; }
+
+        .auth-fallback-box { text-align: center; padding: 3rem 1.5rem; background: #f8fafc; border: 2px dashed var(--border-color); border-radius: var(--radius-md); }
+        .auth-fallback-box i { font-size: 2.5rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .auth-fallback-box p { margin-bottom: 1.5rem; font-weight: 600; }
+        .auth-fallback-box .google-login-btn { margin: 0 auto; }
+
+        .orders-container { display: flex; flex-direction: column; gap: 1.5rem; }
+        .order-card { border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-surface); overflow: hidden; box-shadow: var(--shadow-sm); }
+        .order-meta-bar { background: #f8fafc; padding: 1rem; border-bottom: 1px solid var(--border-color); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.85rem; }
+        .meta-group span { display: block; }
+        .meta-label { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.7rem; }
+        .meta-value { color: var(--text-heading); font-weight: 700; }
+        .order-contents { padding: 1.25rem; }
+        .order-item-row { font-weight: 700; color: var(--text-heading); font-size: 0.95rem; margin-bottom: 0.25rem; }
+
+        /* Progress Pipeline Tracker */
+        .tracking-pipeline { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; margin: 2rem 0 1.5rem 0; }
+        .tracking-pipeline::before { content: ''; position: absolute; top: 14px; left: 12.5%; width: 75%; height: 4px; background: var(--border-color); z-index: 1; }
+        .pipeline-fill { position: absolute; top: 14px; left: 12.5%; height: 4px; background: var(--brand-success); z-index: 2; transition: width 0.4s ease; }
+        .pipeline-node { display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 3; }
+        .node-dot { width: 32px; height: 32px; border-radius: 50%; background: white; border: 3px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
+        .node-title { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-top: 0.5rem; text-transform: uppercase; }
+
+        .pipeline-node.completed .node-dot { border-color: var(--brand-success); background: var(--brand-success); color: white; }
+        .pipeline-node.completed .node-title { color: var(--brand-success); }
+        .pipeline-node.current .node-dot { border-color: var(--brand-primary); background: white; color: var(--brand-primary); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
+        .pipeline-node.current .node-title { color: var(--brand-primary); }
+
+        /* Asset File Delivery System */
+        .asset-delivery-hub { border-top: 1px solid var(--border-color); background: #fafafa; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; justify-content: space-between; align-items: center; }
+        @media(min-width: 768px) { .asset-delivery-hub { flex-direction: row; } }
+        .delivery-instructions h5 { font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
+        .delivery-instructions p { font-size: 0.8rem; }
+        .action-download-btn { background: var(--brand-success); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
+        .upload-input-trigger { display: none; }
+        .action-upload-btn-label { background: white; color: var(--text-heading); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; }
+        
+        .hidden { display: none !important; }
+        .loading-text { font-size: 0.85rem; color: var(--brand-primary); font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo"><i class="fa-solid fa-store"></i> <span>shop.ayushacharya</span></a>
+            <div class="nav-actions">
+                <div class="nav-cart-status" id="nav-cart-trigger"><i class="fa-solid fa-cart-shopping"></i></div>
+                <div id="navbar-auth-dock">
+                    <button class="google-login-btn" id="login-trigger-btn"><i class="fa-brands fa-google"></i> Sign In</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-workspace">
+        <div class="store-intro">
+            <h1>Premium Digital Solutions Catalog</h1>
+            <p>Adjust parameters to find your optimal tier requirements. Sign in to capture dynamic database order logs real-time.</p>
+        </div>
+
+        <div class="shop-layout-grid" id="main-layout-wrapper">
+            <div class="catalog-grid">
+                <div class="product-premium-card" data-id="web_development" data-name="Website Development">
+                    <div>
+                        <div class="item-meta-header">
+                            <div class="icon-wrapper"><i class="fa-solid fa-code"></i></div>
+                            <h3>Web Application Development</h3>
+                        </div>
+                        <p class="desc">High-performance responsive systems, interactive backend connections, and robust portals.</p>
+                        <div class="dynamic-spec-box">
+                            <h5>Included Framework Deliverables:</h5>
+                            <ul class="dynamic-spec-list" id="webdev-spec-target"></ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="slider-control-hub">
+                            <div class="slider-meta-tags"><span>Plan Tier</span><span class="tier-label-output" id="webdev-tier-txt">Essential</span></div>
+                            <input type="range" class="custom-range-slider webdev-step-slider" min="0" max="100" value="0">
+                            <div class="live-pricing-counter">Rs. <span id="webdev-price-txt">5,000</span></div>
+                        </div>
+                        <button type="button" class="action-add-btn"><i class="fa-solid fa-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-premium-card" data-id="graphic_design" data-name="Graphic Designing">
+                    <div>
+                        <div class="item-meta-header">
+                            <div class="icon-wrapper"><i class="fa-solid fa-bezier-curve"></i></div>
+                            <h3>Creative Graphic Designing</h3>
+                        </div>
+                        <p class="desc">Bespoke corporate identity solutions, typography sets, vector asset books, and UI packages.</p>
+                        <div class="dynamic-spec-box">
+                            <h5>Included Design Deliverables:</h5>
+                            <ul class="dynamic-spec-list" id="graphic-spec-target"></ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="slider-control-hub">
+                            <div class="slider-meta-tags"><span>Plan Tier</span><span class="tier-label-output" id="graphic-tier-txt">Essential</span></div>
+                            <input type="range" class="custom-range-slider graphic-step-slider" min="0" max="100" value="0">
+                            <div class="live-pricing-counter">Rs. <span id="graphic-price-txt">1,000</span></div>
+                        </div>
+                        <button type="button" class="action-add-btn"><i class="fa-solid fa-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-panel-sticky hidden" id="checkout-sidebar-panel">
+                <h2><i class="fa-solid fa-basket-shopping"></i> Selected Items</h2>
+                <div id="cart-nodes-wrapper" class="cart-items-ledger"></div>
+                <div class="summary-total-container">
+                    <span>Estimated Investment:</span>
+                    <span class="price-tag">Rs. <span id="grand-total-ledger">0</span></span>
+                </div>
+                <form id="store-checkout-form">
+                    <div class="form-row-compact">
+                        <div class="form-control-block"><label for="usr-name">Full Name</label><input type="text" id="usr-name" placeholder="Name" required></div>
+                        <div class="form-control-block"><label for="usr-email">Email Address</label><input type="email" id="usr-email" placeholder="Email" required></div>
+                    </div>
+                    <div class="form-control-block">
+                        <label>Verified Checkout Gateway</label>
+                        <div class="gateway-exclusive-lock"><i class="fa-solid fa-qrcode"></i> <span>FonePay Secure QR Portal</span></div>
+                    </div>
+                    <div class="form-control-block"><label for="usr-notes">Project Instructions</label><textarea id="usr-notes" rows="2" placeholder="Describe instructions..."></textarea></div>
+                    <button type="submit" id="submit-order-btn" class="checkout-submit-trigger" disabled>Place Order Request</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="dashboard-section" id="customer-portal-anchor">
+            <div class="dashboard-header">
+                <h2><i class="fa-solid fa-user-gear"></i> Customer Order Management Hub (Live DB)</h2>
+            </div>
+            
+            <div id="auth-fallback-view" class="auth-fallback-box">
+                <i class="fa-solid fa-lock"></i>
+                <p>Sign in using your Google Account to check order statuses, download assets, or attach briefings.</p>
+                <button class="google-login-btn" id="dashboard-login-btn"><i class="fa-brands fa-google"></i> Sign In via Google</button>
+            </div>
+
+            <div id="authenticated-portal-view" class="hidden">
+                <div class="orders-container" id="orders-render-dock"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, query, where, onSnapshot, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC1HjhcaaoDiOWnE8VubodBA1ZA1d8A_dA",
+            authDomain: "shop-ayushacharya.firebaseapp.com",
+            projectId: "shop-ayushacharya",
+            storageBucket: "shop-ayushacharya.firebasestorage.app",
+            messagingSenderId: "768454356269",
+            appId: "1:768454356269:web:72f2afb37584f30ba6b7a4",
+            measurementId: "G-P1KNKKYCGC"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+        const analytics = getAnalytics(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        let currentAuthenticatedUser = null;
+        let unsubscribeOrders = null;
+
+        document.getElementById('login-trigger-btn').addEventListener('click', loginUserPipeline);
+        document.getElementById('dashboard-login-btn').addEventListener('click', loginUserPipeline);
+
+        async function loginUserPipeline() {
+            try {
+                await signInWithPopup(auth, googleProvider);
+            } catch (error) {
+                console.error("Authentication Fault:", error);
+                alert("Google Sign-In failed: " + error.message);
+            }
+        }
+
+        window.logoutUserPipeline = async function() {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.error("Logout error", error);
+            }
+        };
+
+        onAuthStateChanged(auth, (user) => {
+            const navbarDock = document.getElementById('navbar-auth-dock');
+            const fallbackView = document.getElementById('auth-fallback-view');
+            const authenticatedView = document.getElementById('authenticated-portal-view');
+
+            if (user) {
+                currentAuthenticatedUser = user;
+                document.getElementById('usr-name').value = user.displayName || "";
+                document.getElementById('usr-email').value = user.email || "";
+
+                navbarDock.innerHTML = `
+                    <div class="user-profile-badge">
+                        <img src="${user.photoURL || 'https://via.placeholder.com/32'}" alt="Avatar">
+                        <span>${user.displayName || 'Client'}</span>
+                        <button class="logout-trigger" onclick="logoutUserPipeline()" title="Sign Out">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </div>
+                `;
+                
+                fallbackView.classList.add('hidden');
+                authenticatedView.classList.remove('hidden');
+                listenToLiveCustomerOrders(user.uid);
+            } else {
+                currentAuthenticatedUser = null;
+                if(unsubscribeOrders) { unsubscribeOrders(); unsubscribeOrders = null; }
+
+                navbarDock.innerHTML = `
+                    <button class="google-login-btn" id="login-trigger-btn-retry"><i class="fa-brands fa-google"></i> Sign In</button>
+                `;
+                document.getElementById('login-trigger-btn-retry').addEventListener('click', loginUserPipeline);
+                
+                fallbackView.classList.remove('hidden');
+                authenticatedView.classList.add('hidden');
+            }
+        });
+
+        function listenToLiveCustomerOrders(uid) {
+            const ordersQuery = query(collection(db, "orders"), where("userId", "==", uid));
+            
+            unsubscribeOrders = onSnapshot(ordersQuery, (snapshot) => {
+                const ordersList = [];
+                snapshot.forEach((doc) => {
+                    ordersList.push({ docId: doc.id, ...doc.data() });
+                });
+                ordersList.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
+                renderCustomerOrdersDashboard(ordersList);
+            }, (error) => {
+                console.error("Firestore loading failure:", error);
+            });
+        }
+
+        function renderCustomerOrdersDashboard(orders) {
+            const renderDock = document.getElementById('orders-render-dock');
+            renderDock.innerHTML = "";
+
+            if (orders.length === 0) {
+                renderDock.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding:2rem; font-weight:600;">No verified data orders inside your account logs.</p>`;
+                return;
+            }
+
+            orders.forEach((order) => {
+                const step = order.statusStep || 1;
+                const progressWidth = step === 1 ? 0 : step === 2 ? 33.33 : step === 3 ? 66.66 : 100;
+                
+                let fileHubMarkup = "";
+                if (order.downloadUrl) {
+                    fileHubMarkup = `
+                        <div class="asset-delivery-hub">
+                            <div class="delivery-instructions">
+                                <h5><i class="fa-solid fa-box-open" style="color:var(--brand-success);"></i> Project Deliverables Ready!</h5>
+                                <p>Your production files are ready. Download the output below.</p>
+                            </div>
+                            <a href="${order.downloadUrl}" target="_blank" class="action-download-btn">
+                                <i class="fa-solid fa-cloud-arrow-down"></i> Download Package (.zip)
+                            </a>
+                        </div>
+                    `;
+                } else {
+                    fileHubMarkup = `
+                        <div class="asset-delivery-hub">
+                            <div class="delivery-instructions">
+                                <h5><i class="fa-solid fa-cloud-arrow-up" style="color:var(--brand-primary);"></i> Project Asset Ingestion</h5>
+                                <p>Upload blueprints, copy assets, or visual guidelines requirements.</p>
+                            </div>
+                            <div>
+                                <label class="action-upload-btn-label">
+                                    <input type="file" class="upload-input-trigger" data-id="${order.docId}">
+                                    <i class="fa-solid fa-paperclip"></i> ${order.clientFileName ? order.clientFileName : "Attach Spec Sheet"}
+                                </label>
+                                <div id="upload-status-${order.docId}" class="loading-text"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                const cardNode = document.createElement('div');
+                cardNode.className = 'order-card';
+                cardNode.innerHTML = `
+                    <div class="order-meta-bar">
+                        <div class="meta-group"><span class="meta-label">Order Ref ID</span><span class="meta-value">${order.docId.substring(0,8).toUpperCase()}</span></div>
+                        <div class="meta-group"><span class="meta-label">Date Dispatched</span><span class="meta-value">${order.dateString}</span></div>
+                        <div class="meta-group"><span class="meta-label">Total Volume</span><span class="meta-value">${order.investment}</span></div>
+                        <div class="meta-group"><span class="meta-label">Verification Gate</span><span class="meta-value" style="color:var(--brand-success);"><i class="fa-solid fa-shield-halved"></i> Verified</span></div>
+                    </div>
+                    <div class="order-contents">
+                        <div class="order-item-row">${order.itemsSummary}</div>
+                        <div class="tracking-pipeline">
+                            <div class="pipeline-fill" style="width: ${progressWidth}%;"></div>
+                            <div class="pipeline-node ${step >= 1 ? (step == 1 ? 'current' : 'completed') : ''}"><div class="node-dot">${step > 1 ? '✓' : '1'}</div><div class="node-title">Requested</div></div>
+                            <div class="pipeline-node ${step >= 2 ? (step == 2 ? 'current' : 'completed') : ''}"><div class="node-dot">${step > 2 ? '✓' : '2'}</div><div class="node-title">Production</div></div>
+                            <div class="pipeline-node ${step >= 3 ? (step == 3 ? 'current' : 'completed') : ''}"><div class="node-dot">${step > 3 ? '✓' : '3'}</div><div class="node-title">QA Check</div></div>
+                            <div class="pipeline-node ${step >= 4 ? (step == 4 ? 'current' : 'completed') : ''}"><div class="node-dot">${step > 4 ? '✓' : '4'}</div><div class="node-title">Deployed</div></div>
+                        </div>
+                    </div>
+                    ${fileHubMarkup}
+                `;
+                renderDock.appendChild(cardNode);
+            });
+
+            document.querySelectorAll('.upload-input-trigger').forEach(input => {
+                input.addEventListener('change', executeClientFileStorageUpload);
+            });
+        }
+
+        async function executeClientFileStorageUpload(e) {
+            const selectedFile = e.target.files[0];
+            const orderDocId = e.target.getAttribute('data-id');
+            if(!selectedFile || !orderDocId) return;
+
+            const trackingIndicator = document.getElementById(`upload-status-${orderDocId}`);
+            trackingIndicator.textContent = "Uploading assets securely...";
+
+            try {
+                const fileRefPath = ref(storage, `client_briefs/${orderDocId}/${selectedFile.name}`);
+                await uploadBytes(fileRefPath, selectedFile);
+                const fileDownloadUrl = await getDownloadURL(fileRefPath);
+
+                const documentRef = doc(db, "orders", orderDocId);
+                await updateDoc(documentRef, {
+                    clientFileUrl: fileDownloadUrl,
+                    clientFileName: selectedFile.name
+                });
+
+                trackingIndicator.textContent = "Upload complete!";
+            } catch (error) {
+                console.error("Storage upload faulted:", error);
+                trackingIndicator.textContent = "Upload error occurred.";
+                alert("Error archiving file attachment setup: " + error.message);
+            }
+        }
+
+        document.getElementById('store-checkout-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            if(!currentAuthenticatedUser) {
+                alert("Please authenticate via Google using the account portal below before locking in your checkout order profile.");
+                document.getElementById('customer-portal-anchor').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            const buyerNameString = document.getElementById('usr-name').value;
+            const buyerEmailString = document.getElementById('usr-email').value;
+            const extraClientSpecs = document.getElementById('usr-notes').value || "None";
+            const currentGrandSumVal = document.getElementById('grand-total-ledger').textContent;
+            const collectedNames = checkoutCartItems.map(n => n.name).join(', ');
+
+            try {
+                processOrderFormBtn.disabled = true;
+                processOrderFormBtn.textContent = "Saving to Database...";
+
+                await addDoc(collection(db, "orders"), {
+                    userId: currentAuthenticatedUser.uid,
+                    userEmail: currentAuthenticatedUser.email,
+                    clientName: buyerNameString,
+                    itemsSummary: collectedNames,
+                    investment: "Rs. " + currentGrandSumVal,
+                    notes: extraClientSpecs,
+                    statusStep: 1, 
+                    downloadUrl: null, 
+                    clientFileName: null,
+                    clientFileUrl: null,
+                    dateString: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+                    timestamp: Date.now()
+                });
+
+                alert("Order recorded successfully in the database! Opening client email handoff portal.");
+                triggerClientEmailHandoff(buyerNameString, buyerEmailString, currentGrandSumVal, extraClientSpecs);
+
+                checkoutCartItems = [];
+                document.getElementById('store-checkout-form').reset();
+                syncClientStoreEcosystem();
+            } catch (error) {
+                console.error("Order writing faulted:", error);
+                alert("Error updating order structure records: " + error.message);
+            } finally {
+                processOrderFormBtn.disabled = false;
+                processOrderFormBtn.textContent = "Place Order Request";
+            }
+        });
+
+        function triggerClientEmailHandoff(name, email, total, notes) {
+            const targetRecipient = "contact@ayushacharya5.com.np";
+            let emailBodyText = `ORDER PROPOSAL - shop.ayushacharya\n=========================================\n`;
+            emailBodyText += `Client Profile: ${name} (${email})\n`;
+            emailBodyText += `Grand Invoice Investment: Rs. ${total}\n`;
+            emailBodyText += `Instructions: ${notes}\n=========================================\n`;
+            
+            const dynamicSubject = `Order Proposal - ${name}`;
+            const nativeMailtoUrl = `mailto:${targetRecipient}?subject=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBodyText)}`;
+            window.location.href = nativeMailtoUrl;
+        }
+    </script>
+
+    <script>
+        let checkoutCartItems = [];
+        let currentlyActiveState = {};
+        
+        const webdevMatrix = [
+            { threshold: 50, label: "Essential Tier", price: 5000, specs: ["Responsive UI Blueprint layouts", "Basic landing elements", "Speed-optimized page templates"] },
+            { threshold: 101, label: "Ultimate Tier", price: 85000, specs: ["Fullstack application infrastructure builds", "Secure relational database frameworks", "24/7 Deployment assistance guarantees"] }
+        ];
+
+        const graphicMatrix = [
+            { threshold: 50, label: "Essential Tier", price: 1000, specs: ["1 High-resolution Vector profile template", "Export elements in multiple transparent formats"] },
+            { threshold: 101, label: "Ultimate Tier", price: 25000, specs: ["Complete production corporate brand asset system books", "Bespoke custom product UI/UX kits layouts"] }
+        ];
+
+        const premiumProductCards = document.querySelectorAll('.product-premium-card');
+        const itemsLedgerContainer = document.getElementById('cart-nodes-wrapper');
+        const summaryTotalValueDisplay = document.getElementById('grand-total-ledger');
+        const processOrderFormBtn = document.getElementById('submit-order-btn');
+        const navCartTriggerBox = document.getElementById('nav-cart-trigger');
+        const layoutGridWrapper = document.getElementById('main-layout-wrapper');
+        const checkoutSidebarPanel = document.getElementById('checkout-sidebar-panel');
+
+        function parseContinuousMatrix(currentSliderVal, referenceMatrix, labelNode, priceNode, specContainer, cacheKey) {
+            const numericVal = parseInt(currentSliderVal);
+            let activeMatch = referenceMatrix[0];
+            for (let tier of referenceMatrix) { if (numericVal <= tier.threshold) { activeMatch = tier; break; } }
+            if (!currentlyActiveState[cacheKey] || currentlyActiveState[cacheKey].label !== activeMatch.label) {
+                specContainer.innerHTML = activeMatch.specs.map(item => `<li><i class="fa-solid fa-circle-check"></i> <span>${item}</span></li>`).join('');
+            }
+            labelNode.textContent = activeMatch.label; priceNode.textContent = activeMatch.price.toLocaleString('en-IN');
+            currentlyActiveState[cacheKey] = activeMatch;
+        }
+
+        const wdS = document.querySelector('.webdev-step-slider');
+        function syncWd(){ parseContinuousMatrix(wdS.value, webdevMatrix, document.getElementById('webdev-tier-txt'), document.getElementById('webdev-price-txt'), document.getElementById('webdev-spec-target'), 'webdev'); }
+        wdS.addEventListener('input', syncWd); syncWd();
+
+        const gdS = document.querySelector('.graphic-step-slider');
+        function syncGd(){ parseContinuousMatrix(gdS.value, graphicMatrix, document.getElementById('graphic-tier-txt'), document.getElementById('graphic-price-txt'), document.getElementById('graphic-spec-target'), 'graphic'); }
+        gdS.addEventListener('input', syncGd); syncGd();
+
+        premiumProductCards.forEach(card => {
+            card.querySelector('.action-add-btn').addEventListener('click', () => {
+                const itemId = card.getAttribute('data-id');
+                const baseCardName = card.getAttribute('data-name');
+                let liveTierMatch = (itemId === 'web_development') ? currentlyActiveState['webdev'] : currentlyActiveState['graphic'];
+                
+                const processedName = `${baseCardName} (${liveTierMatch.label})`;
+                const existingIndex = checkoutCartItems.findIndex(node => node.id === itemId);
+                if (existingIndex > -1) { checkoutCartItems[existingIndex].name = processedName; checkoutCartItems[existingIndex].price = liveTierMatch.price; }
+                else { checkoutCartItems.push({ id: itemId, name: processedName, price: liveTierMatch.price }); }
+                syncClientStoreEcosystem();
+            });
+        });
+
+        function syncClientStoreEcosystem() {
+            itemsLedgerContainer.innerHTML = "";
+            if(checkoutCartItems.length === 0) {
+                navCartTriggerBox.classList.remove('has-items'); checkoutSidebarPanel.classList.remove('visible');
+                checkoutSidebarPanel.classList.add('hidden'); layoutGridWrapper.classList.remove('has-items');
+                processOrderFormBtn.disabled = true; return;
+            }
+            navCartTriggerBox.classList.add('has-items'); layoutGridWrapper.classList.add('has-items');
+            checkoutSidebarPanel.classList.remove('hidden'); setTimeout(() => { checkoutSidebarPanel.classList.add('visible'); }, 50);
+            processOrderFormBtn.disabled = false;
+            let currentAggregatedTotal = 0;
+            checkoutCartItems.forEach((cartNode, idx) => {
+                currentAggregatedTotal += cartNode.price;
+                const row = document.createElement('div'); row.className = 'ledger-row';
+                row.innerHTML = `<div class="ledger-row-details"><h4>${cartNode.name}</h4><span>Rs. ${cartNode.price.toLocaleString('en-IN')}</span></div>
+                                 <button type="button" class="ledger-row-delete" onclick="expelCartRow(${idx})"><i class="fa-solid fa-trash-can"></i></button>`;
+                itemsLedgerContainer.appendChild(row);
+            });
+            summaryTotalValueDisplay.textContent = currentAggregatedTotal.toLocaleString('en-IN');
+        }
+
+        window.expelCartRow = function(targetPositionIndex) { checkoutCartItems.splice(targetPositionIndex, 1); syncClientStoreEcosystem(); };
+    </script>
+</body>
+</html>
