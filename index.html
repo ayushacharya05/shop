@@ -83,29 +83,46 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
+        /* Upgraded Cart Navigation Trigger Element */
         .nav-cart-status {
             background: #f1f5f9;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: var(--text-heading);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             user-select: none;
             border: 1px solid transparent;
-        }
-
-        .nav-cart-status:hover {
-            background: #e2e8f0;
-            border-color: var(--brand-primary);
+            position: relative;
         }
 
         .nav-cart-status i {
+            color: var(--text-heading);
+            font-size: 1.25rem; /* Large high-visibility profile scale */
+            transition: transform 0.2s;
+        }
+
+        .nav-cart-status:hover {
+            border-color: var(--brand-primary);
+            background: #eff6ff;
+        }
+        
+        .nav-cart-status:hover i {
             color: var(--brand-primary);
+            transform: scale(1.05);
+        }
+
+        /* Dynamic highlighted cart notification bubble state indicator */
+        .nav-cart-status.has-items {
+            background: var(--brand-gradient);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .nav-cart-status.has-items i {
+            color: white;
         }
 
         /* Global Structural Container Layout */
@@ -173,7 +190,6 @@
                 display: flex;
                 flex-direction: column;
             }
-            /* Split the panel components visually via CSS Order */
             .checkout-panel-sticky .panel-cart-header,
             .checkout-panel-sticky .cart-items-ledger,
             .checkout-panel-sticky .summary-total-container {
@@ -183,16 +199,14 @@
             .checkout-panel-sticky .support-help-center {
                 order: 3;
             }
-            /* Inject a spacer mimic layout layer rule between elements */
             .checkout-panel-sticky::before {
                 content: "";
                 display: block;
                 order: 2;
                 margin: 1.5rem -1.5rem;
-                border-bottom: 8px solid #f1f5f9; /* Break block separator */
+                border-bottom: 8px solid #f1f5f9;
             }
             
-            /* Move the entire sticky panel container block to the top container engine */
             .shop-layout-grid.has-items #checkout-sidebar-panel {
                 order: -1;
                 background: transparent;
@@ -201,7 +215,6 @@
                 padding: 0;
             }
 
-            /* Wrap inner sections into clean professional floating cards */
             .checkout-panel-sticky .panel-cart-header,
             .checkout-panel-sticky .cart-items-ledger,
             .checkout-panel-sticky .summary-total-container {
@@ -226,7 +239,6 @@
                 margin-bottom: 0;
             }
 
-            /* Checkout input fields form wrapper conversion to card on mobile */
             .checkout-panel-sticky #store-checkout-form {
                 background: var(--bg-surface);
                 border: 1px solid var(--border-color);
@@ -657,9 +669,8 @@
                 <i class="fa-solid fa-store"></i>
                 <span>shop.ayushacharya</span>
             </a>
-            <div class="nav-cart-status" id="nav-cart-trigger">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span id="nav-counter-label">0 Selected Items</span>
+            <div class="nav-cart-status" id="nav-cart-trigger" title="View Selected Items">
+                <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
     </nav>
@@ -828,10 +839,8 @@
     </div>
 
     <script>
-        // Application Global Data Matrix Store arrays
         let checkoutCartItems = [];
 
-        // Exact Data Arrays Mapping for Image 1 Hosting Packages
         const hostingTiers = {
             1: { 
                 label: "Web Essential", 
@@ -855,7 +864,6 @@
             }
         };
 
-        // Exact Data Arrays Mapping for Image 2 Domain Catalog Matrix
         const domainTiers = {
             1: { label: ".xyz Extension", price: 500, specs: ["Instant DNS Allocation", "Free Namespace Privacy Protection", "Full Ownership Lock Control Security"] },
             2: { label: ".info Extension", price: 799, specs: ["Instant DNS Allocation", "Free Namespace Privacy Protection", "Full Ownership Lock Control Security"] },
@@ -871,29 +879,23 @@
         const itemsLedgerContainer = document.getElementById('cart-nodes-wrapper');
         const summaryTotalValueDisplay = document.getElementById('grand-total-ledger');
         const processOrderFormBtn = document.getElementById('submit-order-btn');
-        const navigationCartLabelSpan = document.getElementById('nav-counter-label');
         const navCartTriggerBox = document.getElementById('nav-cart-trigger');
         
-        // Layout and Sidebar Element Links
         const layoutGridWrapper = document.getElementById('main-layout-wrapper');
         const checkoutSidebarPanel = document.getElementById('checkout-sidebar-panel');
         const fullCheckoutForm = document.getElementById('store-checkout-form');
 
-        // Target Lists Elements
         const hostingSpecListContainer = document.getElementById('hosting-spec-target');
         const domainSpecListContainer = document.getElementById('domain-spec-target');
 
-        // Format number strings with standard comma separation routines
         function formatRupees(num) {
             return num.toLocaleString('en-IN');
         }
 
-        // Render dynamic text properties bullet structures
         function renderSpecsList(targetContainer, specArray) {
             targetContainer.innerHTML = specArray.map(spec => `<li><i class="fa-solid fa-circle-check"></i> <span>${spec}</span></li>`).join('');
         }
 
-        // Dynamic pricing counters listener updates (Range Type)
         premiumProductCards.forEach(card => {
             if (card.getAttribute('data-type') === 'range') {
                 const rangeSlider = card.querySelector('.custom-range-slider');
@@ -904,7 +906,6 @@
             }
         });
 
-        // Hosting Step Slider Controls Update Listener
         const hostingSlider = document.querySelector('.hosting-step-slider');
         const hostingLabel = document.getElementById('hosting-tier-txt');
         const hostingPriceDisplay = document.getElementById('hosting-price-txt');
@@ -917,7 +918,6 @@
         }
         hostingSlider.addEventListener('input', refreshHostingSpecsUI);
 
-        // Domain Step Slider Controls Update Listener
         const domainSlider = document.querySelector('.domain-step-slider');
         const domainLabel = document.getElementById('domain-tier-txt');
         const domainPriceDisplay = document.getElementById('domain-price-txt');
@@ -930,7 +930,6 @@
         }
         domainSlider.addEventListener('input', refreshDomainSpecsUI);
 
-        // Navigation Cart Link Trigger - Scrolls straight down to the billing input fields
         navCartTriggerBox.addEventListener('click', () => {
             if (checkoutCartItems.length === 0) {
                 alert("Your active order selection basket is empty. Add a service to proceed.");
@@ -938,14 +937,12 @@
             }
             fullCheckoutForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
             
-            // Highlight text input fields visually
             fullCheckoutForm.style.boxShadow = '0 0 0 4px rgba(59, 130, 246, 0.2)';
             setTimeout(() => {
                 fullCheckoutForm.style.boxShadow = 'none';
             }, 1500);
         });
 
-        // Cart items adding engine pipelines hooks setup
         premiumProductCards.forEach(card => {
             const actionPushBtn = card.querySelector('.action-add-btn');
             actionPushBtn.addEventListener('click', () => {
@@ -966,7 +963,6 @@
                     currentItemAmount = chosenTier.price;
                 }
 
-                // If exact same ID is pushed, update metadata properties
                 const existingItemIndex = checkoutCartItems.findIndex(node => node.id === itemId);
                 if(existingItemIndex > -1) {
                     checkoutCartItems[existingItemIndex].name = itemName;
@@ -976,21 +972,17 @@
                 }
 
                 syncClientStoreEcosystem();
-
-                // AUTOMATIC TOP SCROLL: Smoothly takes the viewport back to the top area 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
-        // Synchronize display layout interfaces elements matching current items list states
         function syncClientStoreEcosystem() {
             itemsLedgerContainer.innerHTML = "";
             const dynamicItemCount = checkoutCartItems.length;
             
-            navigationCartLabelSpan.textContent = `${dynamicItemCount} ${dynamicItemCount === 1 ? 'Item' : 'Items'} Selected`;
-
             if(dynamicItemCount === 0) {
-                // Remove panel visibility classes smoothly
+                navCartTriggerBox.classList.remove('has-items');
+                
                 checkoutSidebarPanel.classList.remove('visible');
                 setTimeout(() => {
                     checkoutSidebarPanel.classList.add('hidden');
@@ -1002,7 +994,8 @@
                 return;
             }
 
-            // Reveal hidden panel container blocks
+            navCartTriggerBox.classList.add('has-items');
+
             if(checkoutSidebarPanel.classList.contains('hidden')) {
                 layoutGridWrapper.classList.add('has-items');
                 checkoutSidebarPanel.classList.remove('hidden');
@@ -1034,13 +1027,11 @@
             summaryTotalValueDisplay.textContent = formatRupees(currentAggregatedTotal);
         }
 
-        // Global row removal callbacks functions proxies systems
         window.expelCartRow = function(targetPositionIndex) {
             checkoutCartItems.splice(targetPositionIndex, 1);
             syncClientStoreEcosystem();
         };
 
-        // Form processing Direct Gmail Web / Native Redirect Router
         document.getElementById('store-checkout-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -1054,10 +1045,8 @@
             const extraClientSpecs = document.getElementById('usr-notes').value || "None provided";
             const currentGrandSumVal = summaryTotalValueDisplay.textContent;
 
-            // Target recipient set to the correct valid email formatting address
             const targetRecipient = "contact@ayushacharya5.com.np";
 
-            // Generate clean plain text formatting for the email body
             let emailBodyText = `ORDER PROPOSAL - shop.ayushacharya\n`;
             emailBodyText += `-----------------------------------------\n\n`;
             emailBodyText += `CLIENT INFO:\n`;
@@ -1079,48 +1068,37 @@
             emailBodyText += `Sent via shop.ayushacharya platform.`;
 
             const dynamicSubject = `Order Proposal - ${buyerNameString}`;
-            
-            // Check if user is on PC/Desktop or Mobile
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
             if (!isMobile) {
-                // Desktop/PC: Direct target to official Gmail Compose URL sequence passing down valid email string parameter
                 const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetRecipient}&su=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBodyText)}`;
                 window.open(gmailWebUrl, '_blank');
             } else {
-                // Mobile devices: Native app mailto fallback link integration
                 const nativeMailtoUrl = `mailto:${targetRecipient}?subject=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBodyText)}`;
                 window.location.href = nativeMailtoUrl;
             }
 
-            // Flush client application states after action handoff
             checkoutCartItems = [];
             document.getElementById('store-checkout-form').reset();
             syncClientStoreEcosystem();
         });
 
-        // Help Desk Direct Gmail Web / Native Redirect Router
         document.getElementById('custom-assistance-link').addEventListener('click', function(event) {
             event.preventDefault();
 
             const targetRecipient = "contact@ayushacharya5.com.np";
             const dynamicSubject = "Custom Project Inquiry - shop.ayushacharya";
-            
-            // Check if user is on PC/Desktop or Mobile
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
             if (!isMobile) {
-                // Desktop/PC: Direct target to official Gmail Compose URL with an empty body
                 const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetRecipient}&su=${encodeURIComponent(dynamicSubject)}`;
                 window.open(gmailWebUrl, '_blank');
             } else {
-                // Mobile devices: Native app mailto fallback
                 const nativeMailtoUrl = `mailto:${targetRecipient}?subject=${encodeURIComponent(dynamicSubject)}`;
                 window.location.href = nativeMailtoUrl;
             }
         });
 
-        // Initialize lists with initial states
         refreshHostingSpecsUI();
         refreshDomainSpecsUI();
     </script>
