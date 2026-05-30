@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop.ayushacharya</title>
-       <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ayushacharya05/shop/refs/heads/main/images/icon.png">
+    <title>shop.ayushacharya | Premium Agency Store</title>
+        <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ayushacharya05/shop/refs/heads/main/images/icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -93,6 +92,15 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            border: 1px solid transparent;
+        }
+
+        .nav-cart-status:hover {
+            background: #e2e8f0;
+            border-color: var(--brand-primary);
         }
 
         .nav-cart-status i {
@@ -126,20 +134,9 @@
 
         /* Dynamic Layout Engine */
         .shop-layout-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
-            align-items: start;
-            transition: grid-template-columns 0.4s ease;
-        }
-
-        @media (min-width: 992px) {
-            .shop-layout-grid.has-items {
-                grid-template-columns: 1.4fr 1.1fr;
-            }
-            .shop-layout-grid:not(.has-items) {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* Catalog Product Cards Deck Layout */
@@ -147,6 +144,112 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
+        }
+
+        /* Mobile Layout Split Engine */
+        .checkout-panel-sticky {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.3s ease;
+            scroll-margin-top: 6rem;
+        }
+
+        .checkout-panel-sticky.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Viewport Split Logic */
+        @media (max-width: 991px) {
+            .shop-layout-grid.has-items {
+                display: flex;
+                flex-direction: column;
+            }
+            /* Split the panel components visually via CSS Order */
+            .checkout-panel-sticky .panel-cart-header,
+            .checkout-panel-sticky .cart-items-ledger,
+            .checkout-panel-sticky .summary-total-container {
+                order: 1;
+            }
+            .checkout-panel-sticky #store-checkout-form,
+            .checkout-panel-sticky .support-help-center {
+                order: 3;
+            }
+            /* Inject a spacer mimic layout layer rule between elements */
+            .checkout-panel-sticky::before {
+                content: "";
+                display: block;
+                order: 2;
+                margin: 1.5rem -1.5rem;
+                border-bottom: 8px solid #f1f5f9; /* Break block separator */
+            }
+            
+            /* Move the entire sticky panel container block to the top container engine */
+            .shop-layout-grid.has-items #checkout-sidebar-panel {
+                order: -1;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+
+            /* Wrap inner sections into clean professional floating cards */
+            .checkout-panel-sticky .panel-cart-header,
+            .checkout-panel-sticky .cart-items-ledger,
+            .checkout-panel-sticky .summary-total-container {
+                background: var(--bg-surface);
+                border-left: 1px solid var(--border-color);
+                border-right: 1px solid var(--border-color);
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .checkout-panel-sticky .panel-cart-header {
+                border-top: 1px solid var(--border-color);
+                border-top-left-radius: var(--radius-lg);
+                border-top-right-radius: var(--radius-lg);
+                padding-top: 1rem;
+                margin-bottom: 0;
+            }
+            .checkout-panel-sticky .summary-total-container {
+                border-bottom: 1px solid var(--border-color);
+                border-bottom-left-radius: var(--radius-lg);
+                border-bottom-right-radius: var(--radius-lg);
+                padding-bottom: 1rem;
+                margin-bottom: 0;
+            }
+
+            /* Checkout input fields form wrapper conversion to card on mobile */
+            .checkout-panel-sticky #store-checkout-form {
+                background: var(--bg-surface);
+                border: 1px solid var(--border-color);
+                border-radius: var(--radius-lg);
+                padding: 1.25rem;
+                box-shadow: var(--shadow-sm);
+            }
+        }
+
+        /* Desktop Viewport Alignment Engine */
+        @media (min-width: 992px) {
+            .shop-layout-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                align-items: start;
+                transition: grid-template-columns 0.4s ease;
+            }
+            .shop-layout-grid.has-items {
+                grid-template-columns: 1.4fr 1.1fr;
+            }
+            .checkout-panel-sticky {
+                position: sticky;
+                top: 5rem;
+            }
         }
 
         .product-premium-card {
@@ -329,25 +432,7 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
 
-        /* PORTABLE SIDEBAR DESIGN */
-        .checkout-panel-sticky {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-md);
-            position: sticky;
-            top: 5rem;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .checkout-panel-sticky.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        /* CARD HEADER COMPONENT DESIGN */
         .checkout-panel-sticky h2 {
             font-size: 1.2rem;
             font-weight: 800;
@@ -571,7 +656,7 @@
                 <i class="fa-solid fa-store"></i>
                 <span>shop.ayushacharya</span>
             </a>
-            <div class="nav-cart-status">
+            <div class="nav-cart-status" id="nav-cart-trigger">
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span id="nav-counter-label">0 Selected Items</span>
             </div>
@@ -692,7 +777,9 @@
             </div>
 
             <div class="checkout-panel-sticky hidden" id="checkout-sidebar-panel">
-                <h2><i class="fa-solid fa-basket-shopping"></i> Order Summary</h2>
+                <div class="panel-cart-header">
+                    <h2><i class="fa-solid fa-basket-shopping"></i> Selected Items</h2>
+                </div>
                 
                 <div id="cart-nodes-wrapper" class="cart-items-ledger"></div>
 
@@ -784,10 +871,12 @@
         const summaryTotalValueDisplay = document.getElementById('grand-total-ledger');
         const processOrderFormBtn = document.getElementById('submit-order-btn');
         const navigationCartLabelSpan = document.getElementById('nav-counter-label');
+        const navCartTriggerBox = document.getElementById('nav-cart-trigger');
         
         // Layout and Sidebar Element Links
         const layoutGridWrapper = document.getElementById('main-layout-wrapper');
         const checkoutSidebarPanel = document.getElementById('checkout-sidebar-panel');
+        const fullCheckoutForm = document.getElementById('store-checkout-form');
 
         // Target Lists Elements
         const hostingSpecListContainer = document.getElementById('hosting-spec-target');
@@ -840,6 +929,21 @@
         }
         domainSlider.addEventListener('input', refreshDomainSpecsUI);
 
+        // Navigation Cart Link Trigger - Scrolls straight down to the billing input fields
+        navCartTriggerBox.addEventListener('click', () => {
+            if (checkoutCartItems.length === 0) {
+                alert("Your active order selection basket is empty. Add a service to proceed.");
+                return;
+            }
+            fullCheckoutForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Highlight text input fields visually
+            fullCheckoutForm.style.boxShadow = '0 0 0 4px rgba(59, 130, 246, 0.2)';
+            setTimeout(() => {
+                fullCheckoutForm.style.boxShadow = 'none';
+            }, 1500);
+        });
+
         // Cart items adding engine pipelines hooks setup
         premiumProductCards.forEach(card => {
             const actionPushBtn = card.querySelector('.action-add-btn');
@@ -871,6 +975,9 @@
                 }
 
                 syncClientStoreEcosystem();
+
+                // AUTOMATIC TOP SCROLL: Smoothly takes the viewport back to the top area 
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
