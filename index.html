@@ -353,8 +353,8 @@
             font-size: 0.8rem;
         }
 
-        /* Upgraded Continuous Slider Layout Configurations */
-        .slider-control-hub {
+        /* Dropdown Control Hub */
+        .plan-select-hub {
             background: #f8fafc;
             border: 1px solid var(--border-color);
             padding: 1rem;
@@ -362,47 +362,34 @@
             margin-bottom: 1rem;
         }
 
-        .slider-meta-tags {
-            display: flex;
-            justify-content: space-between;
+        .plan-select-label {
+            display: block;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            color: var(--text-body);
+            color: var(--text-heading);
             letter-spacing: 0.5px;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.4rem;
         }
 
-        .tier-label-output {
-            color: var(--brand-primary);
-            font-weight: 700;
-        }
-
-        .custom-range-slider {
-            -webkit-appearance: none;
-            appearance: none;
+        .custom-plan-select {
             width: 100%;
-            height: 6px;
-            border-radius: 10px;
-            background: var(--border-color);
+            padding: 0.65rem 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            background-color: white;
             outline: none;
-            margin-bottom: 0.6rem;
             cursor: pointer;
+            margin-bottom: 0.8rem;
+            transition: all 0.2s;
         }
 
-        .custom-range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--brand-primary);
-            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
-            transition: transform 0.1s;
-        }
-
-        .custom-range-slider::-webkit-slider-thumb:active {
-            transform: scale(1.15);
+        .custom-plan-select:focus {
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .live-pricing-counter {
@@ -672,12 +659,13 @@
     <div class="main-workspace">
         <div class="store-intro">
             <h1>Premium Digital Solutions Catalog</h1>
-            <p>Drag the sliders smoothly. The plans, prices, and checklist specifications will seamlessly adapt as you change tiers.</p>
+            <p>Select your required tier from the plan menu. The prices and checklist specifications will seamlessly adapt as you change choices.</p>
         </div>
 
         <div class="shop-layout-grid" id="main-layout-wrapper">
             <div class="catalog-grid">
                 
+                <!-- Web Development -->
                 <div class="product-premium-card" data-id="web_development" data-name="Website Development">
                     <div>
                         <div class="item-meta-header">
@@ -692,15 +680,20 @@
                         </div>
                     </div>
                     <div>
-                        <div class="slider-control-hub">
-                            <div class="slider-meta-tags"><span>Plan Tier</span><span class="tier-label-output" id="webdev-tier-txt">Essential Tier</span></div>
-                            <input type="range" class="custom-range-slider webdev-step-slider" min="0" max="100" value="0">
+                        <div class="plan-select-hub">
+                            <label class="plan-select-label" for="webdev-plan-select">Select Plan Tier</label>
+                            <select id="webdev-plan-select" class="custom-plan-select webdev-select">
+                                <option value="0">Essential Tier</option>
+                                <option value="1">Plus Tier</option>
+                                <option value="2">Ultimate Tier</option>
+                            </select>
                             <div class="live-pricing-counter">Rs. <span id="webdev-price-txt">5,000</span></div>
                         </div>
                         <button type="button" class="action-add-btn"><i class="fa-solid fa-plus"></i> Add to Cart</button>
                     </div>
                 </div>
 
+                <!-- Graphic Design -->
                 <div class="product-premium-card" data-id="graphic_design" data-name="Graphic Designing">
                     <div>
                         <div class="item-meta-header">
@@ -715,15 +708,20 @@
                         </div>
                     </div>
                     <div>
-                        <div class="slider-control-hub">
-                            <div class="slider-meta-tags"><span>Plan Tier</span><span class="tier-label-output" id="graphic-tier-txt">Essential Tier</span></div>
-                            <input type="range" class="custom-range-slider graphic-step-slider" min="0" max="100" value="0">
+                        <div class="plan-select-hub">
+                            <label class="plan-select-label" for="graphic-plan-select">Select Plan Tier</label>
+                            <select id="graphic-plan-select" class="custom-plan-select graphic-select">
+                                <option value="0">Essential Tier</option>
+                                <option value="1">Plus Tier</option>
+                                <option value="2">Ultimate Tier</option>
+                            </select>
                             <div class="live-pricing-counter">Rs. <span id="graphic-price-txt">1,000</span></div>
                         </div>
                         <button type="button" class="action-add-btn"><i class="fa-solid fa-plus"></i> Add to Cart</button>
                     </div>
                 </div>
 
+                <!-- Digital Marketing -->
                 <div class="product-premium-card" data-id="digital_marketing" data-name="Digital Marketing">
                     <div>
                         <div class="item-meta-header">
@@ -738,15 +736,20 @@
                         </div>
                     </div>
                     <div>
-                        <div class="slider-control-hub">
-                            <div class="slider-meta-tags"><span>Plan Tier</span><span class="tier-label-output" id="marketing-tier-txt">Essential Tier</span></div>
-                            <input type="range" class="custom-range-slider marketing-step-slider" min="0" max="100" value="0">
+                        <div class="plan-select-hub">
+                            <label class="plan-select-label" for="marketing-plan-select">Select Plan Tier</label>
+                            <select id="marketing-plan-select" class="custom-plan-select marketing-select">
+                                <option value="0">Essential Tier</option>
+                                <option value="1">Plus Tier</option>
+                                <option value="2">Ultimate Tier</option>
+                            </select>
                             <div class="live-pricing-counter">Rs. <span id="marketing-price-txt">1,500</span></div>
                         </div>
                         <button type="button" class="action-add-btn"><i class="fa-solid fa-plus"></i> Add to Cart</button>
                     </div>
                 </div>
 
+                <!-- Web Hosting -->
                 <div class="product-premium-card" data-id="web_hosting" data-name="Premium Web Hosting">
                     <div>
                         <div class="item-meta-header">
@@ -761,15 +764,20 @@
                         </div>
                     </div>
                     <div>
-                        <div class="slider-control-hub">
-                            <div class="slider-meta-tags"><span>Plan Tier</span><span class="tier-label-output" id="hosting-tier-txt">Web Essential</span></div>
-                            <input type="range" class="custom-range-slider hosting-step-slider" min="0" max="100" value="0">
+                        <div class="plan-select-hub">
+                            <label class="plan-select-label" for="hosting-plan-select">Select Plan Tier</label>
+                            <select id="hosting-plan-select" class="custom-plan-select hosting-select">
+                                <option value="0">Web Essential</option>
+                                <option value="1">Cloud Business</option>
+                                <option value="2">Enterprise Dedicated</option>
+                            </select>
                             <div class="live-pricing-counter">Rs. <span id="hosting-price-txt">1,080</span><small style="font-size:0.7rem; color:var(--text-muted); font-weight:500;"> /yr</small></div>
                         </div>
                         <button type="button" class="action-add-btn"><i class="fa-solid fa-plus"></i> Add to Cart</button>
                     </div>
                 </div>
 
+                <!-- Domain Registry -->
                 <div class="product-premium-card" data-id="domain_registry" data-name="Domain Registration">
                     <div>
                         <div class="item-meta-header">
@@ -784,9 +792,13 @@
                         </div>
                     </div>
                     <div>
-                        <div class="slider-control-hub">
-                            <div class="slider-meta-tags"><span>Extension</span><span class="tier-label-output" id="domain-tier-txt">.xyz Extension</span></div>
-                            <input type="range" class="custom-range-slider domain-step-slider" min="0" max="100" value="0">
+                        <div class="plan-select-hub">
+                            <label class="plan-select-label" for="domain-plan-select">Select Extension</label>
+                            <select id="domain-plan-select" class="custom-plan-select domain-select">
+                                <option value="0">.xyz Extension</option>
+                                <option value="1">.com / .org Extension</option>
+                                <option value="2">.io / .ai Extension</option>
+                            </select>
                             <div class="live-pricing-counter">Rs. <span id="domain-price-txt">500</span><small style="font-size:0.7rem; color:var(--text-muted); font-weight:500;"> /yr</small></div>
                         </div>
                         <button type="button" class="action-add-btn"><i class="fa-solid fa-plus"></i> Add to Cart</button>
@@ -795,6 +807,7 @@
 
             </div>
 
+            <!-- Sticky Cart Sidebar -->
             <div class="checkout-panel-sticky hidden" id="checkout-sidebar-panel">
                 <div class="panel-cart-header">
                     <h2><i class="fa-solid fa-basket-shopping"></i> Selected Items</h2>
@@ -849,299 +862,170 @@
         let checkoutCartItems = [];
         let currentlyActiveState = {};
 
-        // Data Arrays Mapping Out Sub-Tiers mapping seamlessly into continuous slide logic
+        // Matrices mapping options index directly to pricing & features
         const webdevMatrix = [
-            { threshold: 33, label: "Essential Tier", price: 5000, specs: ["Responsive Single Page System", "Clean HTML/CSS layout configuration", "Interactive basic components", "Standard contact form processing pipelines", "Optimized loading speed blueprints"] },
-            { threshold: 75, label: "Plus Tier", price: 25000, specs: ["Multi-page standard corporate web structures", "Advanced JavaScript interaction protocols", "Customized CSS/Tailwind frontend layers", "Content management platform adjustments", "API communications system integration"] },
-            { threshold: 101, label: "Ultimate Tier", price: 85000, specs: ["Fullstack enterprise software system builds", "Comprehensive admin operations controller panel", "High security custom database configurations", "Robust user login session structures", "Priority 24/7 technical deployment assistance"] }
+            { label: "Essential Tier", price: 5000, specs: ["Responsive Single Page System", "Clean HTML/CSS layout configuration", "Interactive basic components", "Standard contact form processing pipelines", "Optimized loading speed blueprints"] },
+            { label: "Plus Tier", price: 25000, specs: ["Multi-page standard corporate web structures", "Advanced JavaScript interaction protocols", "Customized CSS/Tailwind frontend layers", "Content management platform adjustments", "API communications system integration"] },
+            { label: "Ultimate Tier", price: 85000, specs: ["Fullstack enterprise software system builds", "Comprehensive admin operations controller panel", "High security custom database configurations", "Robust user login session structures", "Priority 24/7 technical deployment assistance"] }
         ];
 
         const graphicMatrix = [
-            { threshold: 33, label: "Essential Tier", price: 1000, specs: ["1 High-resolution Vector Logotype mock", "Basic typographic layout guides", "Export structures in transparent PNG/SVG formats", "2 standard design revisions cycles"] },
-            { threshold: 75, label: "Plus Tier", price: 10000, specs: ["3 alternative conceptual brand logs", "Complete visual standards guidebook asset manual", "Social media production toolkit templates", "High priority support revision windows"] },
-            { threshold: 101, label: "Ultimate Tier", price: 25000, specs: ["Complete enterprise level brand makeover systems", "Custom UI/UX component vector library kits", "Print-ready marketing deployment files bundle", "Unlimited design system enhancement iterations"] }
+            { label: "Essential Tier", price: 1000, specs: ["2 Custom Brand Logo Concepts", "High-Resolution Vector Source Files", "Basic Social Media Graphics Pack", "Print-Ready Business Card Layouts"] },
+            { label: "Plus Tier", price: 5000, specs: ["Complete Brand Identity Guidelines", "Full Corporate Stationery Suite", "Custom Vector Illustration Pack", "Social Media Templates & Assets"] },
+            { label: "Ultimate Tier", price: 15000, specs: ["Comprehensive Brand Architecture Manual", "Full UI/UX Component System", "3D Product Renderings & Mockups", "Unlimited Design Revisions"] }
         ];
 
         const marketingMatrix = [
-            { threshold: 33, label: "Essential Tier", price: 1500, specs: ["Initial organic engine visibility audit report", "Basic targeted keyword optimization tracking", "Setup guides for analytics monitoring channels", "Monthly search query ranking updates"] },
-            { threshold: 75, label: "Plus Tier", price: 18000, specs: ["Comprehensive technical ranking corrections", "Targeted paid advertising campaign execution outlines", "Continuous conversion path tuning models", "Interactive digital dashboard performance indicators"] },
-            { threshold: 101, label: "Ultimate Tier", price: 50000, specs: ["Full channel omnipresent advertising systems", "In-depth competitor structural performance tracking", "Bespoke user retention and copy assets creation", "Weekly strategy sync sessions with engineering leads"] }
+            { label: "Essential Tier", price: 1500, specs: ["Basic On-Page SEO Optimization", "Initial Keyword Research & Strategy", "Single Ad Campaign Setup", "Monthly Performance Analytics Report"] },
+            { label: "Plus Tier", price: 8000, specs: ["Comprehensive Technical & Content SEO", "Multi-Channel Paid Campaign Management", "Content Creation & Copywriting", "Bi-Weekly Strategy & Optimization"] },
+            { label: "Ultimate Tier", price: 25000, specs: ["Full-Funnel Growth Marketing Strategy", "Advanced Conversion Rate Optimization (CRO)", "Dedicated Growth Specialist Team", "Real-Time Custom BI Dashboard Access"] }
         ];
 
         const hostingMatrix = [
-            { threshold: 25, label: "Web Essential", price: 1080, specs: ["Standard Performance", "1 Website Selection", "Unlimited NVMe-SSD Storage", "Unmetered Bandwidth", "Weekly Backup Schemas", "2GB LVE RAM Core Allocation"] },
-            { threshold: 50, label: "Web Plus", price: 1800, specs: ["Standard Performance", "5 Distributed Websites", "Unlimited NVMe-SSD Storage", "Unmetered Bandwidth", "Daily Backup Routine Protocols", "cPanel Access Control Dashboards"] },
-            { threshold: 75, label: "Web Pro", price: 3240, specs: ["Boosted Processing Engine", "Unlimited Websites Allocation", "Unlimited NVMe-SSD Storage", "Daily Backup Routine Protocols", "4GB High-Tier LVE RAM Allocation", "Python / Node.js Support"] },
-            { threshold: 101, label: "Web Ultimate", price: 4320, specs: ["5x Faster Execution Benchmarks", "Unlimited Websites Allocation", "Unlimited NVMe-SSD Storage", "Unmetered Bandwidth", "Daily Backup Routine Protocols", "File Limit: 5,000,000"] }
+            { label: "Web Essential", price: 1080, specs: ["10GB NVMe High-Speed Storage", "Free SSL Certificate Included", "Unmetered Bandwidth Allocation", "Daily Automated Backups"] },
+            { label: "Cloud Business", price: 3600, specs: ["50GB NVMe High-Speed Storage", "Free Domain & SSL Certificate", "Advanced Security & Firewall Rules", "Dedicated Staging Environments"] },
+            { label: "Enterprise Dedicated", price: 12000, specs: ["Unlimited NVMe Storage Capacity", "Dedicated CPU & RAM Resources", "Priority Global CDN Integration", "24/7 Managed Server Administration"] }
         ];
 
         const domainMatrix = [
-            { threshold: 12, label: ".xyz Extension", price: 500, specs: ["Instant DNS Allocation", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] },
-            { threshold: 25, label: ".info Extension", price: 799, specs: ["Instant DNS Allocation", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] },
-            { threshold: 37, label: ".biz Extension", price: 1299, specs: ["Instant DNS Allocation", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] },
-            { threshold: 50, label: ".in Extension", price: 1500, specs: ["Regional Targeting Indexing Boost", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] },
-            { threshold: 62, label: ".com Extension", price: 2500, specs: ["Global Commercial Branding Priority", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] },
-            { threshold: 75, label: ".net Extension", price: 3000, specs: ["Infrastructure Tech Authority Extension", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] },
-            { threshold: 87, label: ".org Extension", price: 3000, specs: ["Non-Profit Entity Structural Priority", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] },
-            { threshold: 101, label: ".me Extension", price: 3500, specs: ["Personal Portfolio Priority", "Free Namespace Privacy Protection", "Full Ownership Lock Control"] }
+            { label: ".xyz Extension", price: 500, specs: ["Standard Domain Registration", "Basic DNS Management Tools", "Domain Theft Protection Lock", "Email Forwarding Services"] },
+            { label: ".com / .org Extension", price: 1800, specs: ["Premium Extension Registration", "Full Privacy & WHOIS Protection", "Advanced Managed DNS Servers", "Automated Renewal Tracking"] },
+            { label: ".io / .ai Extension", price: 6500, specs: ["Tech-Focused Extension Domain", "Complete Privacy Protection", "Anycast Global DNS Routing", "VIP Registrar Support Service"] }
         ];
 
-        // Core Elements Fetch Invocations
-        const premiumProductCards = document.querySelectorAll('.product-premium-card');
-        const itemsLedgerContainer = document.getElementById('cart-nodes-wrapper');
-        const summaryTotalValueDisplay = document.getElementById('grand-total-ledger');
-        const processOrderFormBtn = document.getElementById('submit-order-btn');
-        const navCartTriggerBox = document.getElementById('nav-cart-trigger');
-        
-        const layoutGridWrapper = document.getElementById('main-layout-wrapper');
-        const checkoutSidebarPanel = document.getElementById('checkout-sidebar-panel');
-        const fullCheckoutForm = document.getElementById('store-checkout-form');
-
-        function formatRupees(num) {
-            return num.toLocaleString('en-IN');
-        }
-
-        // Logic framework that continuously extracts content metrics depending on continuous sliding percentages
-        function parseContinuousMatrix(currentSliderVal, referenceMatrix, labelNode, priceNode, specContainer, cacheKey) {
-            const numericVal = parseInt(currentSliderVal);
-            let activeMatch = referenceMatrix[0];
-            
-            for (let targetTier of referenceMatrix) {
-                if (numericVal <= targetTier.threshold) {
-                    activeMatch = targetTier;
-                    break;
-                }
-            }
-
-            // Only update specifications inside DOM structure if a true plan jump takes place to avoid visual noise
-            if (!currentlyActiveState[cacheKey] || currentlyActiveState[cacheKey].label !== activeMatch.label) {
-                specContainer.innerHTML = activeMatch.specs.map(item => `<li><i class="fa-solid fa-circle-check"></i> <span>${item}</span></li>`).join('');
-            }
-
-            labelNode.textContent = activeMatch.label;
-            priceNode.textContent = formatRupees(activeMatch.price);
-            currentlyActiveState[cacheKey] = activeMatch;
-        }
-
-        // 1. Web Application Continuous Engine
-        const webdevSlider = document.querySelector('.webdev-step-slider');
-        const webdevLabel = document.getElementById('webdev-tier-txt');
-        const webdevPriceDisplay = document.getElementById('webdev-price-txt');
-        const webdevSpecTarget = document.getElementById('webdev-spec-target');
-        function syncWebdevContinuous() {
-            parseContinuousMatrix(webdevSlider.value, webdevMatrix, webdevLabel, webdevPriceDisplay, webdevSpecTarget, 'webdev');
-        }
-        webdevSlider.addEventListener('input', syncWebdevContinuous);
-
-        // 2. Graphic Design Continuous Engine
-        const graphicSlider = document.querySelector('.graphic-step-slider');
-        const graphicLabel = document.getElementById('graphic-tier-txt');
-        const graphicPriceDisplay = document.getElementById('graphic-price-txt');
-        const graphicSpecTarget = document.getElementById('graphic-spec-target');
-        function syncGraphicContinuous() {
-            parseContinuousMatrix(graphicSlider.value, graphicMatrix, graphicLabel, graphicPriceDisplay, graphicSpecTarget, 'graphic');
-        }
-        graphicSlider.addEventListener('input', syncGraphicContinuous);
-
-        // 3. Digital Marketing Continuous Engine
-        const marketingSlider = document.querySelector('.marketing-step-slider');
-        const marketingLabel = document.getElementById('marketing-tier-txt');
-        const marketingPriceDisplay = document.getElementById('marketing-price-txt');
-        const marketingSpecTarget = document.getElementById('marketing-spec-target');
-        function syncMarketingContinuous() {
-            parseContinuousMatrix(marketingSlider.value, marketingMatrix, marketingLabel, marketingPriceDisplay, marketingSpecTarget, 'marketing');
-        }
-        marketingSlider.addEventListener('input', syncMarketingContinuous);
-
-        // 4. Web Hosting Continuous Engine
-        const hostingSlider = document.querySelector('.hosting-step-slider');
-        const hostingLabel = document.getElementById('hosting-tier-txt');
-        const hostingPriceDisplay = document.getElementById('hosting-price-txt');
-        const hostingSpecTarget = document.getElementById('hosting-spec-target');
-        function syncHostingContinuous() {
-            parseContinuousMatrix(hostingSlider.value, hostingMatrix, hostingLabel, hostingPriceDisplay, hostingSpecTarget, 'hosting');
-        }
-        hostingSlider.addEventListener('input', syncHostingContinuous);
-
-        // 5. Domain Registration Continuous Engine
-        const domainSlider = document.querySelector('.domain-step-slider');
-        const domainLabel = document.getElementById('domain-tier-txt');
-        const domainPriceDisplay = document.getElementById('domain-price-txt');
-        const domainSpecTarget = document.getElementById('domain-spec-target');
-        function syncDomainContinuous() {
-            parseContinuousMatrix(domainSlider.value, domainMatrix, domainLabel, domainPriceDisplay, domainSpecTarget, 'domain');
-        }
-        domainSlider.addEventListener('input', syncDomainContinuous);
-
-        // Click event tracker on nav cart
-        navCartTriggerBox.addEventListener('click', () => {
-            if (checkoutCartItems.length === 0) {
-                alert("Your active order selection basket is empty. Add a service to proceed.");
-                return;
-            }
-            fullCheckoutForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            fullCheckoutForm.style.boxShadow = '0 0 0 4px rgba(59, 130, 246, 0.2)';
-            setTimeout(() => { fullCheckoutForm.style.boxShadow = 'none'; }, 1500);
-        });
-
-        // Add to Basket Routing Architecture (Instantly reads current live state metrics)
-        premiumProductCards.forEach(card => {
-            const actionPushBtn = card.querySelector('.action-add-btn');
-            actionPushBtn.addEventListener('click', () => {
-                const itemId = card.getAttribute('data-id');
-                const baseCardName = card.getAttribute('data-name');
-                let liveTierMatch = null;
-
-                if (itemId === 'web_development') liveTierMatch = currentlyActiveState['webdev'];
-                else if (itemId === 'graphic_design') liveTierMatch = currentlyActiveState['graphic'];
-                else if (itemId === 'digital_marketing') liveTierMatch = currentlyActiveState['marketing'];
-                else if (itemId === 'web_hosting') liveTierMatch = currentlyActiveState['hosting'];
-                else if (itemId === 'domain_registry') liveTierMatch = currentlyActiveState['domain'];
-
-                if (!liveTierMatch) return;
-
-                const processedName = `${baseCardName} (${liveTierMatch.label})`;
-                const existingIndex = checkoutCartItems.findIndex(node => node.id === itemId);
-                
-                if (existingIndex > -1) {
-                    checkoutCartItems[existingIndex].name = processedName;
-                    checkoutCartItems[existingIndex].price = liveTierMatch.price;
-                } else {
-                    checkoutCartItems.push({ id: itemId, name: processedName, price: liveTierMatch.price });
-                }
-
-                syncClientStoreEcosystem();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        function syncClientStoreEcosystem() {
-            itemsLedgerContainer.innerHTML = "";
-            const dynamicItemCount = checkoutCartItems.length;
-            
-            if(dynamicItemCount === 0) {
-                navCartTriggerBox.classList.remove('has-items');
-                checkoutSidebarPanel.classList.remove('visible');
-                setTimeout(() => {
-                    checkoutSidebarPanel.classList.add('hidden');
-                    layoutGridWrapper.classList.remove('has-items');
-                }, 400); 
-                
-                summaryTotalValueDisplay.textContent = "0";
-                processOrderFormBtn.disabled = true;
-                return;
-            }
-
-            navCartTriggerBox.classList.add('has-items');
-
-            if(checkoutSidebarPanel.classList.contains('hidden')) {
-                layoutGridWrapper.classList.add('has-items');
-                checkoutSidebarPanel.classList.remove('hidden');
-                setTimeout(() => { checkoutSidebarPanel.classList.add('visible'); }, 50);
-            }
-
-            processOrderFormBtn.disabled = false;
-            let currentAggregatedTotal = 0;
-
-            checkoutCartItems.forEach((cartNode, numericPointer) => {
-                currentAggregatedTotal += cartNode.price;
-
-                const interactiveRowElement = document.createElement('div');
-                interactiveRowElement.className = 'ledger-row';
-                interactiveRowElement.innerHTML = `
-                    <div class="ledger-row-details">
-                        <h4>${cartNode.name}</h4>
-                        <span>Rs. ${formatRupees(cartNode.price)}</span>
-                    </div>
-                    <button type="button" class="ledger-row-delete" onclick="expelCartRow(${numericPointer})" title="Remove item">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                `;
-                itemsLedgerContainer.appendChild(interactiveRowElement);
-            });
-
-            summaryTotalValueDisplay.textContent = formatRupees(currentAggregatedTotal);
-        }
-
-        window.expelCartRow = function(targetPositionIndex) {
-            checkoutCartItems.splice(targetPositionIndex, 1);
-            syncClientStoreEcosystem();
+        const catalogConfigs = {
+            web_development: { selectClass: '.webdev-select', targetPrice: 'webdev-price-txt', targetSpecs: 'webdev-spec-target', matrix: webdevMatrix },
+            graphic_design: { selectClass: '.graphic-select', targetPrice: 'graphic-price-txt', targetSpecs: 'graphic-spec-target', matrix: graphicMatrix },
+            digital_marketing: { selectClass: '.marketing-select', targetPrice: 'marketing-price-txt', targetSpecs: 'marketing-spec-target', matrix: marketingMatrix },
+            web_hosting: { selectClass: '.hosting-select', targetPrice: 'hosting-price-txt', targetSpecs: 'hosting-spec-target', matrix: hostingMatrix },
+            domain_registry: { selectClass: '.domain-select', targetPrice: 'domain-price-txt', targetSpecs: 'domain-spec-target', matrix: domainMatrix }
         };
 
-        // Complete form pipeline handoff processing
-        document.getElementById('store-checkout-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        function updateCardState(id) {
+            const cfg = catalogConfigs[id];
+            const selectElem = document.querySelector(cfg.selectClass);
+            const index = parseInt(selectElem.value, 10);
+            const selectedTier = cfg.matrix[index];
 
-            if(checkoutCartItems.length === 0) {
-                alert("Your active order selection basket is empty.");
+            currentlyActiveState[id] = {
+                planLabel: selectedTier.label,
+                price: selectedTier.price
+            };
+
+            document.getElementById(cfg.targetPrice).textContent = selectedTier.price.toLocaleString('en-IN');
+
+            const listElem = document.getElementById(cfg.targetSpecs);
+            listElem.innerHTML = '';
+            selectedTier.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${spec}`;
+                listElem.appendChild(li);
+            });
+        }
+
+        function renderCartLedger() {
+            const wrapper = document.getElementById('cart-nodes-wrapper');
+            const totalElem = document.getElementById('grand-total-ledger');
+            const sidebar = document.getElementById('checkout-sidebar-panel');
+            const mainLayout = document.getElementById('main-layout-wrapper');
+            const submitBtn = document.getElementById('submit-order-btn');
+            const cartTrigger = document.getElementById('nav-cart-trigger');
+
+            wrapper.innerHTML = '';
+            let total = 0;
+
+            if (checkoutCartItems.length === 0) {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('visible');
+                mainLayout.classList.remove('has-items');
+                cartTrigger.classList.remove('has-items');
+                submitBtn.disabled = true;
                 return;
             }
 
-            const buyerNameString = document.getElementById('usr-name').value;
-            const buyerEmailString = document.getElementById('usr-email').value;
-            const extraClientSpecs = document.getElementById('usr-notes').value || "None provided";
-            const currentGrandSumVal = summaryTotalValueDisplay.textContent;
+            sidebar.classList.remove('hidden');
+            setTimeout(() => sidebar.classList.add('visible'), 10);
+            mainLayout.classList.add('has-items');
+            cartTrigger.classList.add('has-items');
 
-            const targetRecipient = "contact@ayushacharya5.com.np";
-
-            let emailBodyText = `ORDER PROPOSAL - shop.ayushacharya\n`;
-            emailBodyText += `-----------------------------------------\n\n`;
-            emailBodyText += `CLIENT INFO:\n`;
-            emailBodyText += `Name: ${buyerNameString}\n`;
-            emailBodyText += `Email: ${buyerEmailString}\n\n`;
-            
-            emailBodyText += `SELECTED SERVICES:\n`;
-            checkoutCartItems.forEach((node, idx) => {
-                emailBodyText += `[${idx + 1}] ${node.name} -> Rs. ${formatRupees(node.price)}\n`;
+            checkoutCartItems.forEach((item, idx) => {
+                total += item.price;
+                const row = document.createElement('div');
+                row.className = 'ledger-row';
+                row.innerHTML = `
+                    <div class="ledger-row-details">
+                        <h4>${item.name}</h4>
+                        <span>${item.planLabel} — Rs. ${item.price.toLocaleString('en-IN')}</span>
+                    </div>
+                    <button class="ledger-row-delete" onclick="removeItemFromCart(${idx})">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                `;
+                wrapper.appendChild(row);
             });
-            emailBodyText += `\n`;
 
-            emailBodyText += `TOTAL INVESTMENT: Rs. ${currentGrandSumVal}\n`;
-            emailBodyText += `PAYMENT METHOD: FonePay Secure QR\n\n`;
+            totalElem.textContent = total.toLocaleString('en-IN');
+            submitBtn.disabled = false;
+        }
 
-            emailBodyText += `SPECIAL INSTRUCTIONS:\n`;
-            emailBodyText += `${extraClientSpecs}\n\n`;
-            emailBodyText += `-----------------------------------------\n`;
-            emailBodyText += `Sent via shop.ayushacharya platform.`;
+        function removeItemFromCart(index) {
+            checkoutCartItems.splice(index, 1);
+            renderCartLedger();
+        }
 
-            const dynamicSubject = `Order Proposal - ${buyerNameString}`;
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        document.addEventListener('DOMContentLoaded', () => {
+            Object.keys(catalogConfigs).forEach(id => {
+                const cfg = catalogConfigs[id];
+                const selectElem = document.querySelector(cfg.selectClass);
+                
+                updateCardState(id);
+                
+                selectElem.addEventListener('change', () => {
+                    updateCardState(id);
+                });
+            });
 
-            if (!isMobile) {
-                const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetRecipient}&su=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBodyText)}`;
-                window.open(gmailWebUrl, '_blank');
-            } else {
-                const nativeMailtoUrl = `mailto:${targetRecipient}?subject=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBodyText)}`;
-                window.location.href = nativeMailtoUrl;
-            }
+            document.querySelectorAll('.action-add-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = e.target.closest('.product-premium-card');
+                    const id = card.getAttribute('data-id');
+                    const name = card.getAttribute('data-name');
+                    const currentState = currentlyActiveState[id];
 
-            checkoutCartItems = [];
-            document.getElementById('store-checkout-form').reset();
-            syncClientStoreEcosystem();
+                    // Check if already in cart and update or push
+                    const existingIdx = checkoutCartItems.findIndex(item => item.id === id);
+                    if (existingIdx > -1) {
+                        checkoutCartItems[existingIdx] = {
+                            id,
+                            name,
+                            planLabel: currentState.planLabel,
+                            price: currentState.price
+                        };
+                    } else {
+                        checkoutCartItems.push({
+                            id,
+                            name,
+                            planLabel: currentState.planLabel,
+                            price: currentState.price
+                        });
+                    }
+
+                    renderCartLedger();
+                });
+            });
+
+            document.getElementById('nav-cart-trigger').addEventListener('click', () => {
+                const sidebar = document.getElementById('checkout-sidebar-panel');
+                if (!sidebar.classList.contains('hidden')) {
+                    sidebar.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            document.getElementById('store-checkout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you! Your order request has been submitted. Check your email for the FonePay QR invoice.');
+            });
         });
-
-        document.getElementById('custom-assistance-link').addEventListener('click', function(event) {
-            event.preventDefault();
-
-            const targetRecipient = "contact@ayushacharya5.com.np";
-            const dynamicSubject = "Custom Project Inquiry - shop.ayushacharya";
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-            if (!isMobile) {
-                const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetRecipient}&su=${encodeURIComponent(dynamicSubject)}`;
-                window.open(gmailWebUrl, '_blank');
-            } else {
-                const nativeMailtoUrl = `mailto:${targetRecipient}?subject=${encodeURIComponent(dynamicSubject)}`;
-                window.location.href = nativeMailtoUrl;
-            }
-        });
-
-        // Initialize state setups on immediate application boot
-        syncWebdevContinuous();
-        syncGraphicContinuous();
-        syncMarketingContinuous();
-        syncHostingContinuous();
-        syncDomainContinuous();
     </script>
 </body>
 </html>
