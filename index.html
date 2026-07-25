@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -576,6 +577,50 @@
             color: var(--fonepay-red);
         }
 
+        .fonepay-account-box {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .esewa-check-icon {
+            color: var(--brand-success);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .esewa-logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .fonepay-account-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .fonepay-detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+        }
+
+        .fonepay-detail-row span {
+            color: var(--text-muted);
+        }
+
+        .fonepay-detail-row strong {
+            color: var(--text-heading);
+        }
+
         .gateway-instruction-banner {
             background-color: #f8fafc;
             border-left: 3px solid var(--fonepay-red);
@@ -583,7 +628,7 @@
             padding: 0.5rem 0.75rem;
             border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
             margin-top: 0.4rem;
-            font-size: 0.8rem;
+            font-size: 0.92rem;
             line-height: 1.3;
         }
 
@@ -600,6 +645,10 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
             transition: all 0.2s;
             margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .checkout-submit-trigger:hover {
@@ -610,9 +659,31 @@
         .checkout-submit-trigger:disabled {
             background: var(--text-muted);
             box-shadow: none;
-            opacity: 0.4;
+            opacity: 0.6;
             cursor: not-allowed;
             transform: none;
+        }
+
+        .form-status-note {
+            font-size: 0.8rem;
+            margin-top: 0.6rem;
+            text-align: center;
+            display: none;
+            padding: 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .form-status-note.show-success {
+            display: block;
+            background: #ecfdf5;
+            color: #065f46;
+        }
+
+        .form-status-note.show-error {
+            display: block;
+            background: #fff5f5;
+            color: #991b1b;
         }
 
         .support-help-center {
@@ -635,6 +706,66 @@
         }
 
         .hidden { display: none !important; }
+
+        .order-confirm-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1.5rem;
+        }
+
+        .order-confirm-modal {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.75rem;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            animation: nodeEntrance 0.25s ease-out;
+        }
+
+        .order-confirm-icon {
+            font-size: 2.75rem;
+            color: var(--brand-success);
+            margin-bottom: 0.75rem;
+        }
+
+        .order-confirm-modal h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .order-confirm-modal p {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .order-confirm-close-btn {
+            background: var(--brand-gradient);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            transition: all 0.2s;
+        }
+
+        .order-confirm-close-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 16px rgba(37, 99, 235, 0.35);
+        }
 
         @keyframes nodeEntrance {
             from { opacity: 0; transform: translateY(6px); }
@@ -833,13 +964,13 @@
                     </div>
 
                     <div class="form-control-block">
-                        <label>Verified Checkout Method</label>
-                        <div class="gateway-exclusive-lock">
-                            <i class="fa-solid fa-qrcode"></i>
-                            <span>FonePay Secure QR Portal</span>
+                        <label>Payment Method</label>
+                        <div class="fonepay-account-box">
+                            <i class="fa-solid fa-circle-check esewa-check-icon"></i>
+                            <img src="https://fonepoints.com/images/logos/esewa-logo.png" alt="eSewa" class="esewa-logo-img">
                         </div>
                         <div class="gateway-instruction-banner">
-                            The FonePay QR will be sent directly to your email after confirmation.
+                            You would receive the eSewa QR in your email after order confirmation.
                         </div>
                     </div>
 
@@ -849,16 +980,40 @@
                     </div>
 
                     <button type="submit" id="submit-order-btn" class="checkout-submit-trigger" disabled>Place Order Request</button>
+                    <div id="form-status-note" class="form-status-note"></div>
                 </form>
 
                 <div class="support-help-center">
-                    Need custom specs or custom assistance? <a href="#" id="custom-assistance-link">Click Here</a> to email us directly.
+                    Need custom specs or custom assistance? <a href="mailto:contact@ayushacharya.info.np" id="custom-assistance-link">Click Here</a> to email us directly.
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Order Confirmation Popup -->
+    <div class="order-confirm-overlay hidden" id="order-confirm-overlay">
+        <div class="order-confirm-modal">
+            <div class="order-confirm-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>Order Placed!</h3>
+            <p>Check your Gmail in a few minutes for the payment QR and further discussion.</p>
+            <button type="button" class="order-confirm-close-btn" id="order-confirm-close-btn">Done</button>
+        </div>
+    </div>
+
     <script>
+        // ==========================================================
+        // ORDER DELIVERY CONFIG
+        // Orders are relayed to contact@ayushacharya.info.np via Formspree.
+        // Setup (one-time):
+        //   1. Go to https://formspree.io and sign up / log in.
+        //   2. Create a new form, set its email to contact@ayushacharya.info.np
+        //      and verify it (Formspree sends a confirmation email).
+        //   3. Copy the form's endpoint ID (looks like "mzzjgqvp")
+        //      from the URL https://formspree.io/f/XXXXXXXX
+        //   4. Paste it below, replacing YOUR_FORM_ID.
+        // ==========================================================
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjeopyz";
+
         let checkoutCartItems = [];
         let currentlyActiveState = {};
 
@@ -957,7 +1112,7 @@
                         <h4>${item.name}</h4>
                         <span>${item.planLabel} — Rs. ${item.price.toLocaleString('en-IN')}</span>
                     </div>
-                    <button class="ledger-row-delete" onclick="removeItemFromCart(${idx})">
+                    <button type="button" class="ledger-row-delete" onclick="removeItemFromCart(${idx})">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 `;
@@ -971,6 +1126,43 @@
         function removeItemFromCart(index) {
             checkoutCartItems.splice(index, 1);
             renderCartLedger();
+        }
+
+        // Builds a clean, readable order summary for the email body
+        function buildOrderSummaryText(name, email, notes, total) {
+            let lines = [];
+            lines.push(`New order request from ${name} (${email})`);
+            lines.push('');
+            lines.push('Items:');
+            checkoutCartItems.forEach(item => {
+                lines.push(`- ${item.name} [${item.planLabel}] — Rs. ${item.price.toLocaleString('en-IN')}`);
+            });
+            lines.push('');
+            lines.push(`Total: Rs. ${total.toLocaleString('en-IN')}`);
+            if (notes && notes.trim()) {
+                lines.push('');
+                lines.push('Project Directives / Notes:');
+                lines.push(notes.trim());
+            }
+            return lines.join('\n');
+        }
+
+        function showFormStatus(message, type) {
+            const note = document.getElementById('form-status-note');
+            note.textContent = message;
+            note.className = 'form-status-note ' + (type === 'success' ? 'show-success' : 'show-error');
+        }
+
+        async function sendOrderEmail(payload) {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+            return response;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1021,11 +1213,67 @@
                 }
             });
 
-            document.getElementById('store-checkout-form').addEventListener('submit', (e) => {
+            document.getElementById('order-confirm-close-btn').addEventListener('click', () => {
+                document.getElementById('order-confirm-overlay').classList.add('hidden');
+            });
+
+            document.getElementById('order-confirm-overlay').addEventListener('click', (e) => {
+                if (e.target.id === 'order-confirm-overlay') {
+                    document.getElementById('order-confirm-overlay').classList.add('hidden');
+                }
+            });
+
+            document.getElementById('store-checkout-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
-                alert('Thank you! Your order request has been submitted. Check your email for the FonePay QR invoice.');
+
+                if (checkoutCartItems.length === 0) return;
+
+                const submitBtn = document.getElementById('submit-order-btn');
+                const name = document.getElementById('usr-name').value.trim();
+                const email = document.getElementById('usr-email').value.trim();
+                const notes = document.getElementById('usr-notes').value;
+                const total = checkoutCartItems.reduce((sum, item) => sum + item.price, 0);
+
+                if (FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')) {
+                    showFormStatus('Order sending is not configured yet — set FORMSPREE_ENDPOINT in the script.', 'error');
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+                document.getElementById('form-status-note').className = 'form-status-note';
+
+                const payload = {
+                    _subject: `New Order Request — ${name}`,
+                    _replyto: email,
+                    name: name,
+                    email: email,
+                    notes: notes,
+                    order_total: `Rs. ${total.toLocaleString('en-IN')}`,
+                    order_items: checkoutCartItems.map(i => `${i.name} [${i.planLabel}] — Rs. ${i.price.toLocaleString('en-IN')}`).join('\n'),
+                    message: buildOrderSummaryText(name, email, notes, total)
+                };
+
+                try {
+                    const response = await sendOrderEmail(payload);
+
+                    if (response.ok) {
+                        document.getElementById('order-confirm-overlay').classList.remove('hidden');
+                        checkoutCartItems = [];
+                        renderCartLedger();
+                        document.getElementById('store-checkout-form').reset();
+                    } else {
+                        showFormStatus('Could not send the order. Please email contact@ayushacharya.info.np directly.', 'error');
+                    }
+                } catch (err) {
+                    showFormStatus('Network error — please email contact@ayushacharya.info.np directly.', 'error');
+                } finally {
+                    submitBtn.disabled = checkoutCartItems.length === 0;
+                    submitBtn.innerHTML = 'Place Order Request';
+                }
             });
         });
     </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"87327fcf53be41f08c37151b64e8f4d9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
